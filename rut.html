@@ -1,0 +1,2640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="La Ruta de la Niñez y la Adolescencia de Misiones — Guía turística integral declarada de Interés Provincial. Conectamos familias, emprendimientos y cultura en los 79 municipios de Misiones.">
+<meta property="og:title" content="Ruta de la Niñez y la Adolescencia | Misiones">
+<meta property="og:description" content="Declarada de Interés Provincial. Turismo familiar responsable en los 79 municipios de Misiones, Argentina.">
+<title>La Ruta de la Niñez y la Adolescencia | Misiones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  --verde-profundo: #1A1A2E;
+  --verde-selva: #1E3A5F;
+  --verde-medio: #2D94C4;
+  --verde-vivo: #3DAAD4;
+  --verde-claro: #F5C425;
+  --verde-lima: #FADA5E;
+  --tierra: #E8832A;
+  --tierra-calida: #F09D51;
+  --naranja: #E23D3D;
+  --amarillo: #F5C425;
+  --azul-noche: #4A3772;
+  --azul-medio: #7B5EA7;
+  --azul-cielo: #2D94C4;
+  --crema: #F5F3F8;
+  --crema-oscura: #E8E4EE;
+  --blanco: #FDFCFE;
+  --texto-oscuro: #1A1A2E;
+  --texto-medio: #3D3D54;
+  --texto-claro: #6B6B85;
+  --sombra-verde: rgba(26, 26, 46, 0.35);
+  --sombra-suave: rgba(0, 0, 0, 0.08);
+
+  --rna-rojo: #E23D3D;
+  --rna-naranja: #E8832A;
+  --rna-azul: #2D94C4;
+  --rna-amarillo: #F5C425;
+  --rna-verde: #8CB63C;
+  --rna-violeta: #7B5EA7;
+
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  --r-sm: 8px;
+  --r-md: 16px;
+  --r-lg: 32px;
+  --r-full: 9999px;
+
+  --trans-base: 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --trans-spring: 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  background: var(--blanco);
+  color: var(--texto-oscuro);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: var(--font-body); border: none; }
+
+/* ============================================================
+   LANDING SYSTEM
+   ============================================================ */
+.landing { display: none; }
+.landing.active { display: block; }
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 5vw;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background var(--trans-base), box-shadow var(--trans-base), backdrop-filter var(--trans-base);
+}
+.nav.scrolled {
+  background: rgba(13, 43, 26, 0.96);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 32px var(--sombra-verde);
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.nav-logo-icon {
+  width: 42px; height: 42px;
+  background: linear-gradient(135deg, var(--verde-claro), var(--tierra-calida));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.nav-logo-text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  line-height: 1.2;
+  color: var(--blanco);
+}
+.nav-logo-sub {
+  font-size: 0.65rem;
+  font-weight: 300;
+  opacity: 0.75;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.04em;
+  transition: color var(--trans-base);
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0; right: 0;
+  height: 1px;
+  background: var(--tierra-calida);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--trans-base);
+}
+.nav-links a:hover { color: var(--tierra-calida); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-cta {
+  background: var(--naranja);
+  color: var(--blanco) !important;
+  padding: 9px 22px;
+  border-radius: var(--r-full);
+  font-weight: 600 !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 0.06em;
+  transition: background var(--trans-base), transform var(--trans-spring) !important;
+  box-shadow: 0 4px 16px rgba(244,128,60,0.35);
+}
+.nav-cta:hover { background: var(--tierra-calida) !important; transform: translateY(-1px) !important; }
+.nav-cta::after { display: none !important; }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  padding: 4px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--blanco);
+  border-radius: 2px;
+  transition: transform var(--trans-base), opacity var(--trans-base);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--verde-profundo);
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 80% 60% at 15% 20%, rgba(45,107,74,0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 85% 80%, rgba(116,198,157,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(233,168,76,0.06) 0%, transparent 60%),
+    linear-gradient(165deg, var(--verde-profundo) 0%, #0A1F12 40%, #0D2820 100%);
+}
+.hero-leaves {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.leaf {
+  position: absolute;
+  opacity: 0;
+  animation: float-leaf linear infinite;
+}
+.leaf svg { display: block; }
+@keyframes float-leaf {
+  0%   { transform: translateY(110vh) rotate(0deg) scale(0.8); opacity: 0; }
+  5%   { opacity: 0.25; }
+  90%  { opacity: 0.1; }
+  100% { transform: translateY(-15vh) rotate(360deg) scale(1.1); opacity: 0; }
+}
+.hero-grid-overlay {
+  position: absolute; inset: 0;
+  background-image: 
+    linear-gradient(rgba(116,198,157,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(116,198,157,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 100px 8vw 80px;
+  max-width: 900px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(233,168,76,0.15);
+  border: 1px solid rgba(233,168,76,0.35);
+  color: var(--tierra-calida);
+  padding: 7px 16px;
+  border-radius: var(--r-full);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  animation: fade-up 0.8s 0.2s both;
+}
+.hero-badge-dot {
+  width: 6px; height: 6px;
+  background: var(--tierra-calida);
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(233,168,76,0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(233,168,76,0); }
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.6rem, 6vw, 5.2rem);
+  line-height: 1.08;
+  color: var(--blanco);
+  margin-bottom: 12px;
+  animation: fade-up 0.8s 0.4s both;
+}
+.hero-title strong {
+  font-weight: 600;
+  color: var(--verde-claro);
+  font-style: italic;
+  display: block;
+}
+.hero-subtitle {
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  color: rgba(255,255,255,0.68);
+  font-weight: 300;
+  max-width: 560px;
+  margin-bottom: 48px;
+  line-height: 1.7;
+  animation: fade-up 0.8s 0.6s both;
+}
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  animation: fade-up 0.8s 0.8s both;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--naranja), var(--tierra-calida));
+  color: var(--blanco);
+  padding: 16px 32px;
+  border-radius: var(--r-full);
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  transition: transform var(--trans-spring), box-shadow var(--trans-base);
+  box-shadow: 0 8px 32px rgba(244,128,60,0.4);
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(244,128,60,0.5); }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: rgba(255,255,255,0.88);
+  padding: 15px 32px;
+  border-radius: var(--r-full);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  font-weight: 500;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  transition: border-color var(--trans-base), background var(--trans-base), transform var(--trans-spring);
+}
+.btn-secondary:hover {
+  border-color: rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.07);
+  transform: translateY(-2px);
+}
+.btn-arrow {
+  font-size: 1rem;
+  transition: transform var(--trans-spring);
+}
+.btn-primary:hover .btn-arrow, .btn-secondary:hover .btn-arrow { transform: translateX(4px); }
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 40px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.4);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  animation: fade-up 1s 1.2s both;
+}
+.scroll-line {
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, transparent, rgba(116,198,157,0.6));
+  animation: scroll-pulse 2.4s ease-in-out infinite;
+}
+@keyframes scroll-pulse {
+  0%, 100% { transform: scaleY(1); opacity: 1; }
+  50% { transform: scaleY(0.6); opacity: 0.4; }
+}
+
+.hero-stats {
+  position: absolute;
+  right: 8vw;
+  bottom: 80px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fade-up 0.8s 1s both;
+}
+.hero-stat {
+  text-align: right;
+  border-right: 2px solid rgba(116,198,157,0.4);
+  padding-right: 20px;
+}
+.hero-stat-num {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--verde-claro);
+  line-height: 1;
+}
+.hero-stat-label {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.12s; }
+.reveal-delay-2 { transition-delay: 0.24s; }
+.reveal-delay-3 { transition-delay: 0.36s; }
+.reveal-delay-4 { transition-delay: 0.48s; }
+
+/* ============================================================
+   SECTION COMMON
+   ============================================================ */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 28px; height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.15;
+  font-size: clamp(1.9rem, 3.5vw, 3rem);
+}
+.section-title em { font-style: italic; font-weight: 300; color: var(--verde-medio); }
+
+/* ============================================================
+   CREDIBILIDAD
+   ============================================================ */
+.credibilidad {
+  padding: 100px 8vw;
+  background: var(--crema);
+  position: relative;
+  overflow: hidden;
+}
+.credibilidad::before {
+  content: '';
+  position: absolute;
+  top: -40px; left: -40px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(45,107,74,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.credibilidad-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.credibilidad-card {
+  background: var(--blanco);
+  border-radius: var(--r-lg);
+  padding: 48px;
+  box-shadow: 0 8px 48px var(--sombra-suave);
+  position: relative;
+  overflow: hidden;
+}
+.credibilidad-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--verde-medio), var(--verde-claro), var(--tierra-calida));
+}
+.director-avatar {
+  width: 72px; height: 72px;
+  background: linear-gradient(135deg, var(--verde-medio), var(--verde-claro));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--blanco);
+  font-weight: 600;
+  margin-bottom: 20px;
+  border: 3px solid var(--crema-oscura);
+}
+.director-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.director-role {
+  font-size: 0.82rem;
+  color: var(--verde-medio);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+}
+.director-bio {
+  font-size: 0.9rem;
+  color: var(--texto-medio);
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+.prisma-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--verde-medio);
+  font-weight: 600;
+  font-size: 0.85rem;
+  border: 1.5px solid var(--verde-claro);
+  padding: 9px 20px;
+  border-radius: var(--r-full);
+  transition: background var(--trans-base), color var(--trans-base);
+}
+.prisma-link:hover { background: var(--verde-medio); color: var(--blanco); }
+
+.declaracion-block {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.declaracion-badge {
+  background: linear-gradient(135deg, var(--verde-selva), var(--verde-medio));
+  color: var(--blanco);
+  border-radius: var(--r-md);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.declaracion-badge::before {
+  content: '★';
+  position: absolute;
+  top: -20px; right: -10px;
+  font-size: 8rem;
+  opacity: 0.04;
+  line-height: 1;
+}
+.declaracion-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  margin-bottom: 10px;
+}
+.declaracion-text {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.45;
+  margin-bottom: 16px;
+}
+.declaracion-text em { font-style: italic; color: var(--verde-lima); }
+.declaracion-inst {
+  font-size: 0.78rem;
+  opacity: 0.65;
+  font-weight: 500;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.stat-item {
+  background: var(--blanco);
+  border-radius: var(--r-md);
+  padding: 24px 16px;
+  text-align: center;
+  box-shadow: 0 4px 20px var(--sombra-suave);
+  transition: transform var(--trans-spring);
+}
+.stat-item:hover { transform: translateY(-4px); }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--verde-medio);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-desc {
+  font-size: 0.75rem;
+  color: var(--texto-claro);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* ============================================================
+   PILARES
+   ============================================================ */
+.pilares {
+  padding: 100px 8vw;
+  background: var(--verde-profundo);
+  position: relative;
+  overflow: hidden;
+}
+.pilares::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(ellipse 60% 50% at 0% 100%, rgba(45,107,74,0.25) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 60% at 100% 0%, rgba(116,198,157,0.1) 0%, transparent 50%);
+}
+.pilares-header {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.pilares-header .section-label { color: var(--verde-claro); }
+.pilares-header .section-title { color: var(--blanco); max-width: 480px; }
+.pilares-header .section-title em { color: var(--tierra-calida); }
+.pilares-header p { color: rgba(255,255,255,0.55); font-size: 0.9rem; max-width: 360px; line-height: 1.7; }
+.pilares-grid {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.pilar-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--r-md);
+  padding: 40px 28px;
+  cursor: default;
+  transition: background var(--trans-base), border-color var(--trans-base), transform var(--trans-spring);
+  position: relative;
+  overflow: hidden;
+}
+.pilar-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--pilar-color, var(--verde-medio)), transparent 60%);
+  opacity: 0;
+  transition: opacity var(--trans-base);
+}
+.pilar-card:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.18);
+  transform: translateY(-6px);
+}
+.pilar-card:hover::before { opacity: 0.12; }
+.pilar-icon {
+  width: 54px; height: 54px;
+  border-radius: var(--r-sm);
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin-bottom: 24px;
+  transition: background var(--trans-base), transform var(--trans-spring);
+}
+.pilar-card:hover .pilar-icon {
+  background: rgba(255,255,255,0.16);
+  transform: scale(1.12) rotate(-4deg);
+}
+.pilar-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--blanco);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+.pilar-desc {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.pilar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--verde-claro);
+  transition: gap var(--trans-base), color var(--trans-base);
+}
+.pilar-card:hover .pilar-link { gap: 10px; color: var(--tierra-calida); }
+
+/* ============================================================
+   MAPA PREVIEW
+   ============================================================ */
+.mapa-preview {
+  padding: 100px 8vw;
+  background: var(--crema);
+  overflow: hidden;
+}
+.mapa-preview-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.mapa-preview-text { }
+.mapa-preview-text .section-label { color: var(--verde-medio); }
+.mapa-preview-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.mapa-frame {
+  background: var(--verde-profundo);
+  border-radius: var(--r-lg);
+  padding: 32px;
+  box-shadow: 0 24px 80px rgba(13,43,26,0.25);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 420px;
+}
+.mapa-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(45,107,74,0.3) 0%, transparent 70%);
+}
+.mapa-svg-container {
+  position: relative;
+  z-index: 1;
+}
+/* Misiones SVG Map */
+.mapa-provincia {
+  fill: var(--verde-selva);
+  stroke: rgba(116,198,157,0.3);
+  stroke-width: 1.5;
+  transition: fill var(--trans-base);
+}
+.municipio-dot {
+  fill: var(--verde-claro);
+  cursor: pointer;
+  transition: fill var(--trans-base), r var(--trans-spring);
+  filter: drop-shadow(0 0 4px rgba(116,198,157,0.5));
+}
+.municipio-dot:hover { fill: var(--tierra-calida); r: 6; filter: drop-shadow(0 0 8px rgba(233,168,76,0.7)); }
+.municipio-dot.capital { fill: var(--naranja); r: 7; }
+.municipio-dot.capital:hover { fill: var(--amarillo); }
+.municipio-label {
+  fill: rgba(255,255,255,0.6);
+  font-family: var(--font-body);
+  font-size: 9px;
+  pointer-events: none;
+}
+.mapa-tooltip {
+  position: absolute;
+  background: rgba(13,43,26,0.95);
+  color: var(--blanco);
+  padding: 8px 14px;
+  border-radius: var(--r-sm);
+  font-size: 0.78rem;
+  font-weight: 500;
+  pointer-events: none;
+  white-space: nowrap;
+  border: 1px solid rgba(116,198,157,0.3);
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 10;
+  transform: translateX(-50%) translateY(-120%);
+}
+.mapa-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--r-full);
+  color: rgba(255,255,255,0.65);
+  font-size: 0.72rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--trans-base), border-color var(--trans-base), color var(--trans-base);
+}
+.filter-pill:hover, .filter-pill.active {
+  background: rgba(116,198,157,0.2);
+  border-color: var(--verde-claro);
+  color: var(--verde-claro);
+}
+.mapa-preview-text h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 20px; }
+.mapa-preview-text p {
+  color: var(--texto-medio);
+  line-height: 1.75;
+  margin-bottom: 36px;
+  font-size: 0.95rem;
+}
+.mapa-explore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--verde-selva);
+  color: var(--blanco);
+  padding: 16px 32px;
+  border-radius: var(--r-full);
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: background var(--trans-base), transform var(--trans-spring);
+  box-shadow: 0 8px 32px rgba(26,61,40,0.3);
+}
+.mapa-explore-btn:hover { background: var(--verde-medio); transform: translateY(-3px); }
+
+/* ============================================================
+   ALIANZAS
+   ============================================================ */
+.alianzas {
+  padding: 80px 8vw;
+  background: var(--verde-profundo);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.alianzas-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.alianzas-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.alianzas-header .section-label { color: var(--verde-claro); justify-content: center; }
+.alianzas-header .section-label::before { display: none; }
+.alianzas-header p { color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-top: 12px; }
+.alianzas-header h2 { color: var(--blanco); }
+.alianzas-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.alianza-item {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--r-md);
+  padding: 20px 32px;
+  color: rgba(255,255,255,0.55);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background var(--trans-base), border-color var(--trans-base), color var(--trans-base);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.alianza-item:hover {
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(255,255,255,0.2);
+  color: var(--blanco);
+}
+.alianza-item.featured {
+  background: rgba(116,198,157,0.12);
+  border-color: rgba(116,198,157,0.3);
+  color: var(--verde-lima);
+}
+.alianza-item.featured:hover {
+  background: rgba(116,198,157,0.2);
+  border-color: var(--verde-claro);
+  color: var(--blanco);
+}
+.alianza-icon { font-size: 1.2rem; }
+
+/* ============================================================
+   CRECEMOS JUNTOS
+   ============================================================ */
+.crecemos {
+  padding: 100px 8vw;
+  background: var(--crema);
+  overflow: hidden;
+}
+.crecemos-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.crecemos-text { position: sticky; top: 100px; }
+.crecemos-text .section-label { color: var(--naranja); }
+.crecemos-text h2 { margin-bottom: 20px; }
+.crecemos-text p {
+  color: var(--texto-medio);
+  line-height: 1.8;
+  font-size: 0.95rem;
+  margin-bottom: 32px;
+}
+.beneficios-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 36px;
+}
+.beneficio-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 0.9rem;
+  color: var(--texto-medio);
+  line-height: 1.5;
+}
+.beneficio-check {
+  width: 22px; height: 22px;
+  background: linear-gradient(135deg, var(--verde-medio), var(--verde-claro));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blanco);
+  font-size: 0.65rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.testimonios {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 40px;
+}
+.testimonio {
+  background: var(--blanco);
+  border-radius: var(--r-md);
+  padding: 20px 24px;
+  box-shadow: 0 4px 20px var(--sombra-suave);
+  border-left: 3px solid var(--verde-claro);
+}
+.testimonio-text {
+  font-size: 0.85rem;
+  color: var(--texto-medio);
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+.testimonio-author {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--verde-medio);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.testimonio-dot { width: 6px; height: 6px; background: var(--verde-claro); border-radius: 50%; }
+
+/* Form */
+.contact-form-wrapper {
+  background: var(--blanco);
+  border-radius: var(--r-lg);
+  padding: 48px;
+  box-shadow: 0 16px 64px var(--sombra-suave);
+}
+.form-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.form-subtitle {
+  font-size: 0.85rem;
+  color: var(--texto-claro);
+  margin-bottom: 32px;
+}
+.form-group { margin-bottom: 20px; }
+.form-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--texto-medio);
+  margin-bottom: 7px;
+  letter-spacing: 0.03em;
+}
+.form-label span { color: var(--naranja); }
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--crema-oscura);
+  border-radius: var(--r-sm);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--texto-oscuro);
+  background: var(--blanco);
+  transition: border-color var(--trans-base), box-shadow var(--trans-base);
+  outline: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--verde-claro);
+  box-shadow: 0 0 0 3px rgba(116,198,157,0.2);
+}
+.form-textarea { resize: vertical; min-height: 110px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: var(--texto-claro);
+  cursor: pointer;
+  line-height: 1.5;
+}
+.form-checkbox-label input { margin-top: 2px; accent-color: var(--verde-medio); }
+.form-submit {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, var(--verde-selva), var(--verde-medio));
+  color: var(--blanco);
+  border-radius: var(--r-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  transition: background var(--trans-base), transform var(--trans-spring), box-shadow var(--trans-base);
+  box-shadow: 0 8px 32px rgba(26,61,40,0.25);
+}
+.form-submit:hover {
+  background: linear-gradient(135deg, var(--verde-medio), var(--verde-vivo));
+  transform: translateY(-2px);
+  box-shadow: 0 16px 48px rgba(26,61,40,0.35);
+}
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 40px;
+}
+.form-success .success-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+.form-success h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: var(--verde-medio);
+}
+.form-success p { font-size: 0.9rem; color: var(--texto-claro); }
+
+/* ============================================================
+   INSTAGRAM
+   ============================================================ */
+.instagram-section {
+  padding: 80px 8vw;
+  background: var(--blanco);
+}
+.instagram-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.instagram-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.instagram-header .section-label { color: var(--naranja); }
+.insta-handle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--verde-medio);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 20px;
+  border: 1.5px solid var(--verde-claro);
+  border-radius: var(--r-full);
+  transition: background var(--trans-base), color var(--trans-base);
+}
+.insta-handle:hover { background: var(--verde-medio); color: var(--blanco); border-color: var(--verde-medio); }
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+.insta-post {
+  aspect-ratio: 1;
+  background: var(--crema-oscura);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+.insta-post-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  transition: transform var(--trans-spring);
+}
+.insta-post:hover .insta-post-placeholder { transform: scale(1.08); }
+.insta-post-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13,43,26,0.75);
+  opacity: 0;
+  transition: opacity var(--trans-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blanco);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.insta-post:hover .insta-post-overlay { opacity: 1; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: var(--verde-profundo);
+  padding: 72px 8vw 40px;
+  color: rgba(255,255,255,0.65);
+}
+.footer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 40px;
+}
+.footer-brand { }
+.footer-brand .nav-logo { margin-bottom: 20px; }
+.footer-brand .nav-logo-text { color: var(--blanco); }
+.footer-tagline {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  margin-bottom: 24px;
+  color: rgba(255,255,255,0.5);
+}
+.footer-social-links {
+  display: flex;
+  gap: 12px;
+}
+.footer-social {
+  width: 38px; height: 38px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: background var(--trans-base), transform var(--trans-spring);
+}
+.footer-social:hover { background: rgba(255,255,255,0.15); transform: translateY(-3px); }
+.footer-col-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--blanco);
+  margin-bottom: 20px;
+}
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer-links a {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  transition: color var(--trans-base);
+}
+.footer-links a:hover { color: var(--verde-claro); }
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-credits {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.3);
+}
+.footer-credits a { color: rgba(116,198,157,0.7); }
+.footer-credits a:hover { color: var(--verde-claro); }
+.declaracion-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.04);
+  padding: 10px 18px;
+  border-radius: var(--r-full);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+/* ============================================================
+   LANDING #2 — EXPLORADOR DE MUNICIPIOS
+   ============================================================ */
+#landing-explorador {
+  min-height: 100vh;
+  background: var(--crema);
+  padding-top: 72px;
+}
+.explorador-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5vw;
+  background: rgba(13,43,26,0.96);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 32px var(--sombra-verde);
+}
+.exp-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.85rem;
+  font-weight: 500;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 8px 18px;
+  border-radius: var(--r-full);
+  transition: background var(--trans-base), color var(--trans-base);
+}
+.exp-back-btn:hover { background: rgba(255,255,255,0.12); color: var(--blanco); }
+.exp-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--blanco);
+  font-weight: 400;
+}
+.exp-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--r-full);
+  padding: 8px 16px;
+}
+.exp-search input {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--blanco);
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  width: 200px;
+}
+.exp-search input::placeholder { color: rgba(255,255,255,0.4); }
+.exp-search-icon { color: rgba(255,255,255,0.4); }
+.explorador-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  height: calc(100vh - 72px);
+}
+.exp-sidebar {
+  background: var(--blanco);
+  border-right: 1px solid var(--crema-oscura);
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.exp-sidebar::-webkit-scrollbar { width: 4px; }
+.exp-sidebar::-webkit-scrollbar-track { background: transparent; }
+.exp-sidebar::-webkit-scrollbar-thumb { background: var(--crema-oscura); border-radius: 4px; }
+.exp-filter-section { }
+.exp-filter-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--texto-claro);
+  margin-bottom: 12px;
+}
+.exp-filter-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.exp-filter-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--r-sm);
+  font-size: 0.85rem;
+  color: var(--texto-medio);
+  cursor: pointer;
+  transition: background var(--trans-base), color var(--trans-base);
+  background: transparent;
+  border: none;
+  text-align: left;
+}
+.exp-filter-pill:hover { background: var(--crema); color: var(--verde-medio); }
+.exp-filter-pill.active { background: rgba(45,107,74,0.1); color: var(--verde-medio); font-weight: 600; }
+.exp-pill-icon { font-size: 1rem; }
+.exp-pill-count {
+  margin-left: auto;
+  font-size: 0.72rem;
+  background: var(--crema-oscura);
+  color: var(--texto-claro);
+  padding: 2px 8px;
+  border-radius: var(--r-full);
+}
+.exp-municipios-list {
+  flex: 1;
+}
+.exp-municipio-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--r-sm);
+  font-size: 0.85rem;
+  color: var(--texto-medio);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background var(--trans-base), color var(--trans-base);
+  text-align: left;
+  gap: 8px;
+}
+.exp-municipio-btn:hover { background: var(--crema); color: var(--verde-profundo); }
+.exp-municipio-btn.active { background: rgba(45,107,74,0.12); color: var(--verde-medio); font-weight: 600; }
+.exp-muni-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--verde-claro);
+  flex-shrink: 0;
+}
+.exp-muni-count {
+  font-size: 0.7rem;
+  color: var(--texto-claro);
+  background: var(--crema);
+  padding: 2px 7px;
+  border-radius: var(--r-full);
+}
+.exp-main {
+  overflow-y: auto;
+  position: relative;
+  background: var(--crema);
+}
+.exp-map-view {
+  position: relative;
+  padding: 40px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.exp-map-svg-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.exp-map-legend {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  background: var(--blanco);
+  border-radius: var(--r-md);
+  padding: 16px 20px;
+  box-shadow: 0 4px 24px var(--sombra-suave);
+  font-size: 0.78rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--texto-medio);
+}
+.legend-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+}
+.exp-municipio-detail {
+  display: none;
+  padding: 40px;
+  height: 100%;
+  overflow-y: auto;
+}
+.exp-municipio-detail.visible { display: block; }
+.muni-detail-header {
+  background: linear-gradient(135deg, var(--verde-selva), var(--verde-medio));
+  border-radius: var(--r-lg);
+  padding: 40px;
+  color: var(--blanco);
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.muni-detail-header::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.muni-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: color var(--trans-base);
+}
+.muni-back:hover { color: var(--blanco); }
+.muni-name {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.muni-region {
+  font-size: 0.85rem;
+  opacity: 0.65;
+  margin-bottom: 20px;
+}
+.muni-stats-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.muni-stat {
+  text-align: center;
+}
+.muni-stat-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--verde-lima);
+}
+.muni-stat-label { font-size: 0.72rem; opacity: 0.6; }
+.muni-emprendimientos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.empr-card {
+  background: var(--blanco);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: 0 4px 20px var(--sombra-suave);
+  transition: transform var(--trans-spring), box-shadow var(--trans-base);
+}
+.empr-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px var(--sombra-suave); }
+.empr-img {
+  height: 120px;
+  background: var(--crema-oscura);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+.empr-body { padding: 16px; }
+.empr-cat {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--verde-medio);
+  margin-bottom: 6px;
+}
+.empr-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.empr-desc { font-size: 0.8rem; color: var(--texto-claro); line-height: 1.5; }
+
+/* Sticky CTA */
+.sticky-cta {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 500;
+  display: none;
+}
+.sticky-cta.visible { display: block; }
+.sticky-cta-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--naranja), var(--tierra-calida));
+  color: var(--blanco);
+  padding: 16px 26px;
+  border-radius: var(--r-full);
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 0 8px 32px rgba(244,128,60,0.5);
+  transition: transform var(--trans-spring), box-shadow var(--trans-base);
+  border: none;
+  cursor: pointer;
+}
+.sticky-cta-btn:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 16px 48px rgba(244,128,60,0.6); }
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(13,43,26,0.75);
+  backdrop-filter: blur(6px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.visible { display: flex; }
+.modal-box {
+  background: var(--blanco);
+  border-radius: var(--r-lg);
+  width: 100%;
+  max-width: 640px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.3);
+  animation: modal-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes modal-in {
+  from { opacity: 0; transform: scale(0.92) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.modal-header {
+  background: linear-gradient(135deg, var(--verde-selva), var(--verde-medio));
+  padding: 32px 40px 28px;
+  position: relative;
+  color: var(--blanco);
+}
+.modal-close {
+  position: absolute;
+  top: 20px; right: 24px;
+  background: rgba(255,255,255,0.12);
+  border: none;
+  color: var(--blanco);
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--trans-base);
+}
+.modal-close:hover { background: rgba(255,255,255,0.22); }
+.modal-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  margin-bottom: 8px;
+}
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.modal-subtitle { font-size: 0.85rem; opacity: 0.65; }
+.modal-body { padding: 36px 40px; }
+.modal-success { display: none; }
+.modal-success.visible { display: block; text-align: center; padding: 16px 0; }
+.success-checkmark {
+  font-size: 4rem;
+  margin-bottom: 16px;
+}
+.modal-success h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--verde-medio);
+  margin-bottom: 10px;
+}
+.modal-success p { font-size: 0.9rem; color: var(--texto-claro); line-height: 1.6; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .pilares-grid { grid-template-columns: repeat(2, 1fr); }
+  .credibilidad-grid { grid-template-columns: 1fr; }
+  .mapa-preview-inner { grid-template-columns: 1fr; }
+  .mapa-frame { max-width: 360px; }
+  .crecemos-inner { grid-template-columns: 1fr; }
+  .crecemos-text { position: static; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .instagram-grid { grid-template-columns: repeat(3, 1fr); }
+  .explorador-layout { grid-template-columns: 240px 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .hero-stats { display: none; }
+  .pilares-grid { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: repeat(3, 1fr); }
+  .footer-grid { grid-template-columns: 1fr; }
+  .instagram-grid { grid-template-columns: repeat(2, 1fr); }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form-wrapper { padding: 32px 24px; }
+  .explorador-layout { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+  .exp-sidebar { max-height: 240px; flex-direction: row; overflow-x: auto; }
+  .exp-municipios-list { display: none; }
+  .modal-header, .modal-body { padding: 28px 24px; }
+}
+@media (max-width: 480px) {
+  .hero-ctas { flex-direction: column; align-items: flex-start; }
+  .hero-badge { font-size: 0.65rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     LANDING #1 — HOME INSTITUCIONAL
+     ============================================================ -->
+<div id="landing-home" class="landing active">
+
+  <!-- NAV -->
+  <nav class="nav" id="main-nav">
+    <div class="nav-logo">
+      <div class="nav-logo-icon">🌿</div>
+      <div class="nav-logo-text">
+        RNA Misiones
+        <div class="nav-logo-sub">Ruta de la Niñez y Adolescencia</div>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#credibilidad">Quiénes Somos</a></li>
+      <li><a href="#pilares">Pilares</a></li>
+      <li><a href="#mapa-preview">Municipios</a></li>
+      <li><a href="#crecemos">Participá</a></li>
+      <li><a href="https://prismadigital.com.ar" target="_blank" rel="noopener">Prisma Digital ↗</a></li>
+      <li><a href="#" class="nav-cta" onclick="openExplorador(); return false;">Explorar Mapa →</a></li>
+    </ul>
+    <button class="nav-hamburger" aria-label="Menú" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-leaves" id="hero-leaves"></div>
+    <div class="hero-grid-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Declarada de Interés Provincial · Cámara de Representantes de Misiones
+      </div>
+      <h1 class="hero-title">
+        La Ruta de la Niñez
+        <strong>y la Adolescencia</strong>
+      </h1>
+      <p class="hero-subtitle">
+        De Misiones al Mundo — La guía turística integral que conecta familias, comunidades y emprendimientos locales en los 79 municipios de la provincia.
+      </p>
+      <div class="hero-ctas">
+        <a href="#" class="btn-primary" onclick="openExplorador(); return false;">
+          🗺️ Explorar el Mapa Interactivo <span class="btn-arrow">→</span>
+        </a>
+        <a href="#crecemos" class="btn-secondary">
+          Ser Parte de la Ruta <span class="btn-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-count="79">79</div>
+        <div class="hero-stat-label">Municipios</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-count="340">340+</div>
+        <div class="hero-stat-label">Emprendimientos</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-count="12">12</div>
+        <div class="hero-stat-label">Meses activos</div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      Descubrir
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- CREDIBILIDAD -->
+  <section class="credibilidad" id="credibilidad">
+    <div class="credibilidad-grid">
+      <div class="credibilidad-card reveal">
+        <div class="director-avatar">LM</div>
+        <div class="director-name">Laura Montenegro</div>
+        <div class="director-role">Directora Editorial · Revista Prisma Digital</div>
+        <p class="director-bio">
+          Impulsora y referente institucional de la Ruta de la Niñez y la Adolescencia de Misiones. Con más de una década de trayectoria en comunicación cultural y periodismo de impacto social, Laura lidera esta iniciativa que articula derechos de la infancia, turismo responsable y desarrollo comunitario en toda la provincia.
+        </p>
+        <a href="https://prismadigital.com.ar" target="_blank" rel="noopener" class="prisma-link">
+          📰 Visitar Revista Prisma Digital →
+        </a>
+      </div>
+
+      <div class="declaracion-block">
+        <div class="declaracion-badge reveal reveal-delay-1">
+          <div class="declaracion-eyebrow">Reconocimiento oficial</div>
+          <div class="declaracion-text">
+            Iniciativa declarada de <em>Interés Provincial</em> por la Cámara de Representantes de la Provincia de Misiones
+          </div>
+          <div class="declaracion-inst">República Argentina · Provincia de Misiones</div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-item reveal reveal-delay-1">
+            <div class="stat-num">79</div>
+            <div class="stat-desc">Municipios de la provincia</div>
+          </div>
+          <div class="stat-item reveal reveal-delay-2">
+            <div class="stat-num">340+</div>
+            <div class="stat-desc">Emprendimientos adheridos</div>
+          </div>
+          <div class="stat-item reveal reveal-delay-3">
+            <div class="stat-num">∞</div>
+            <div class="stat-desc">Familias conectadas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILARES DE IMPACTO -->
+  <section class="pilares" id="pilares">
+    <div class="pilares-header">
+      <div>
+        <div class="section-label">Nuestros Ejes</div>
+        <h2 class="section-title">Pilares de <em>Impacto Social</em></h2>
+      </div>
+      <p>Cuatro dimensiones que dan forma a una ruta que transforma comunidades y protege derechos.</p>
+    </div>
+    <div class="pilares-grid">
+      <div class="pilar-card reveal" style="--pilar-color: #2D6B4A;">
+        <div class="pilar-icon">🌿</div>
+        <div class="pilar-title">Turismo Responsable</div>
+        <p class="pilar-desc">Conectamos familias con experiencias auténticas en la naturaleza misionera, promoviendo el respeto por los ecosistemas y las comunidades locales.</p>
+        <div class="pilar-link">Explorar <span>→</span></div>
+      </div>
+      <div class="pilar-card reveal reveal-delay-1" style="--pilar-color: #E9A84C;">
+        <div class="pilar-icon">⭐</div>
+        <div class="pilar-title">Derechos de la Niñez</div>
+        <p class="pilar-desc">Cada actividad y espacio de la Ruta está diseñado para garantizar entornos seguros, inclusivos y enriquecedores para niñas, niños y adolescentes.</p>
+        <div class="pilar-link">Conocer más <span>→</span></div>
+      </div>
+      <div class="pilar-card reveal reveal-delay-2" style="--pilar-color: #F4803C;">
+        <div class="pilar-icon">🤝</div>
+        <div class="pilar-title">Emprendimientos Locales</div>
+        <p class="pilar-desc">Visibilizamos y potenciamos los emprendimientos de las comunidades misioneras, creando redes de economía local solidaria y sostenible.</p>
+        <div class="pilar-link">Ver directorio <span>→</span></div>
+      </div>
+      <div class="pilar-card reveal reveal-delay-3" style="--pilar-color: #457B9D;">
+        <div class="pilar-icon">💡</div>
+        <div class="pilar-title">Cultura y Tecnología</div>
+        <p class="pilar-desc">Integramos la riqueza cultural misionera con herramientas digitales que facilitan el acceso, la participación y la difusión global de nuestra identidad.</p>
+        <div class="pilar-link">Descubrir <span>→</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAPA PREVIEW -->
+  <section class="mapa-preview" id="mapa-preview">
+    <div class="mapa-preview-inner">
+      <div class="mapa-preview-text reveal">
+        <div class="section-label">Mapa Interactivo</div>
+        <h2 class="section-title">Descubrí <em>cada rincón</em> de Misiones</h2>
+        <p>
+          Navegá por los 79 municipios de la provincia y encontrá alojamientos, gastronomía, espacios culturales, experiencias en la naturaleza y servicios adaptados para toda la familia.
+        </p>
+        <div class="mapa-filters" style="flex-wrap:wrap; gap:8px; margin-bottom:32px;">
+          <button class="filter-pill active" onclick="filterMap(this, 'todos')">🗺️ Todos</button>
+          <button class="filter-pill" onclick="filterMap(this, 'alojamiento')">🏡 Alojamiento</button>
+          <button class="filter-pill" onclick="filterMap(this, 'gastronomia')">🍽️ Gastronomía</button>
+          <button class="filter-pill" onclick="filterMap(this, 'cultura')">🎭 Cultura</button>
+          <button class="filter-pill" onclick="filterMap(this, 'naturaleza')">🌲 Naturaleza</button>
+        </div>
+        <button class="mapa-explore-btn" onclick="openExplorador()">
+          🗺️ Ver Mapa Completo →
+        </button>
+      </div>
+
+      <div class="mapa-preview-visual reveal reveal-delay-2">
+        <div class="mapa-frame">
+          <div id="mapa-tooltip" class="mapa-tooltip"></div>
+          <div class="mapa-svg-container" id="svg-mapa-preview-container">
+            <!-- Renderizado por JS -->
+          </div>
+          <div class="mapa-filters" style="margin-top:16px;">
+            <span style="color:rgba(255,255,255,0.3); font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; width:100%; margin-bottom:4px;">Activar vista:</span>
+            <button class="filter-pill active">Todos</button>
+            <button class="filter-pill">🏡 Alojamiento</button>
+            <button class="filter-pill">🌿 Naturaleza</button>
+            <button class="filter-pill">🎭 Cultura</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALIANZAS -->
+  <section class="alianzas" id="alianzas">
+    <div class="alianzas-inner">
+      <div class="alianzas-header">
+        <div class="section-label">Instituciones y Partners</div>
+        <h2 class="section-title" style="color:var(--blanco)">Alianzas <em>Estratégicas</em></h2>
+        <p>Construcción colectiva con organismos provinciales, instituciones educativas y referentes del sector.</p>
+      </div>
+      <div class="alianzas-grid reveal">
+        <div class="alianza-item featured">
+          <span class="alianza-icon">📰</span> Revista Prisma Digital
+        </div>
+        <div class="alianza-item">
+          <span class="alianza-icon">🏛️</span> Cámara de Representantes de Misiones
+        </div>
+        <div class="alianza-item">
+          <span class="alianza-icon">👶</span> Ministerio de Derechos Humanos
+        </div>
+        <div class="alianza-item">
+          <span class="alianza-icon">🗺️</span> Ministerio de Turismo de Misiones
+        </div>
+        <div class="alianza-item">
+          <span class="alianza-icon">🎓</span> Instituciones Educativas Provinciales
+        </div>
+        <div class="alianza-item">
+          <span class="alianza-icon">🤝</span> Municipios Adheridos
+        </div>
+        <div class="alianza-item">
+          <span class="alianza-icon">🌱</span> ONG Infancia Segura
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRECEMOS JUNTOS -->
+  <section class="crecemos" id="crecemos">
+    <div class="crecemos-inner">
+      <!-- Left: copy + testimonios -->
+      <div class="crecemos-text reveal">
+        <div class="section-label">Trabajá con Nosotros</div>
+        <h2 class="section-title">Crecemos <em>Juntos</em></h2>
+        <p>
+          ¿Tenés un emprendimiento, local, servicio o evento cultural en Misiones? Sumarte a la Ruta significa visibilidad provincial y nacional, conexión con familias que eligen turismo responsable y ser parte de una red en constante crecimiento.
+        </p>
+        <ul class="beneficios-list">
+          <li class="beneficio-item">
+            <span class="beneficio-check">✓</span>
+            <span>Perfil completo en el directorio digital accesible desde el mapa interactivo</span>
+          </li>
+          <li class="beneficio-item">
+            <span class="beneficio-check">✓</span>
+            <span>Difusión en redes sociales de @rnamisiones y Revista Prisma Digital</span>
+          </li>
+          <li class="beneficio-item">
+            <span class="beneficio-check">✓</span>
+            <span>Acceso a la red de emprendedores y programas de capacitación</span>
+          </li>
+          <li class="beneficio-item">
+            <span class="beneficio-check">✓</span>
+            <span>Sello de calidad "Ruta de la Niñez Misiones" para tus comunicaciones</span>
+          </li>
+          <li class="beneficio-item">
+            <span class="beneficio-check">✓</span>
+            <span>Sin costo de adhesión inicial — apostamos al crecimiento colectivo</span>
+          </li>
+        </ul>
+
+        <div class="testimonios">
+          <div class="testimonio">
+            <div class="testimonio-text">"Desde que nos sumamos, triplicamos las consultas de familias buscando actividades para sus hijos. La Ruta es una vidriera increíble para los que estamos en el interior."</div>
+            <div class="testimonio-author">
+              <span class="testimonio-dot"></span>
+              María G. · Posada Familiar, San Ignacio
+            </div>
+          </div>
+          <div class="testimonio">
+            <div class="testimonio-text">"El equipo de la Ruta nos ayudó a organizar nuestro festival de cultura local. Llegaron familias de Posadas que nunca habían visitado nuestro municipio."</div>
+            <div class="testimonio-author">
+              <span class="testimonio-dot"></span>
+              Roberto A. · Organización Cultural, Aristóbulo del Valle
+            </div>
+          </div>
+          <div class="testimonio">
+            <div class="testimonio-text">"La declaración de Interés Provincial le da un respaldo institucional enorme. Nuestros clientes confían más en un emprendimiento que forma parte de algo oficial."</div>
+            <div class="testimonio-author">
+              <span class="testimonio-dot"></span>
+              Lorena P. · Guía de Naturaleza, Puerto Iguazú
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div class="contact-form-wrapper reveal reveal-delay-2" id="contact-form-wrapper">
+        <div id="contact-form-content">
+          <div class="form-title">Quiero sumarme a la Ruta</div>
+          <div class="form-subtitle">Completá el formulario y nos contactamos en 48–72 hs hábiles</div>
+          <form onsubmit="handleContactSubmit(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Nombre completo <span>*</span></label>
+                <input type="text" class="form-input" placeholder="Tu nombre y apellido" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Teléfono <span>*</span></label>
+                <input type="tel" class="form-input" placeholder="+54 376 ..." required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email <span>*</span></label>
+              <input type="email" class="form-input" placeholder="tu@email.com" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Municipio <span>*</span></label>
+                <select class="form-select form-select-muni" required>
+                  <option value="">Seleccioná...</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Categoría <span>*</span></label>
+                <select class="form-select" required>
+                  <option value="">Seleccioná...</option>
+                  <option>Alojamiento</option><option>Gastronomía</option>
+                  <option>Cultura y Entretenimiento</option><option>Naturaleza y Aventura</option>
+                  <option>Servicios Turísticos</option><option>Evento</option><option>Otro</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nombre del Emprendimiento / Local / Evento <span>*</span></label>
+              <input type="text" class="form-input" placeholder="Nombre de tu propuesta" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Descripción breve</label>
+              <textarea class="form-textarea" placeholder="Contanos brevemente qué ofrecés y por qué querés ser parte de la Ruta..."></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-checkbox-label">
+                <input type="checkbox" required>
+                Acepto los <a href="#" style="color:var(--verde-medio)">términos y condiciones</a> de la Ruta de la Niñez y la Adolescencia de Misiones
+              </label>
+            </div>
+            <button type="submit" class="form-submit">Enviar Propuesta →</button>
+          </form>
+        </div>
+        <div class="form-success" id="contact-success">
+          <div class="success-icon">🌿</div>
+          <h3>¡Propuesta recibida!</h3>
+          <p>Revisaremos tu propuesta y nos contactaremos en <strong>48–72 horas hábiles</strong>. Bienvenide a la Ruta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section class="instagram-section" id="instagram">
+    <div class="instagram-inner">
+      <div class="instagram-header">
+        <div>
+          <div class="section-label" style="color:var(--naranja)">Comunidad Digital</div>
+          <h2 class="section-title" style="color:var(--texto-oscuro)">Seguinos <em>en Instagram</em></h2>
+        </div>
+        <a href="https://instagram.com/rnamisiones" target="_blank" rel="noopener" class="insta-handle">
+          📸 @rnamisiones →
+        </a>
+      </div>
+      <div class="instagram-grid reveal">
+        <div class="insta-post"><div class="insta-post-placeholder" style="background:linear-gradient(135deg,#1A3D28,#2D6B4A)">🌿</div><div class="insta-post-overlay">Ver en Instagram</div></div>
+        <div class="insta-post"><div class="insta-post-placeholder" style="background:linear-gradient(135deg,#E9A84C,#F4803C)">👶</div><div class="insta-post-overlay">Ver en Instagram</div></div>
+        <div class="insta-post"><div class="insta-post-placeholder" style="background:linear-gradient(135deg,#2C6E8A,#1D3557)">🗺️</div><div class="insta-post-overlay">Ver en Instagram</div></div>
+        <div class="insta-post"><div class="insta-post-placeholder" style="background:linear-gradient(135deg,#74C69D,#2D6B4A)">🌺</div><div class="insta-post-overlay">Ver en Instagram</div></div>
+        <div class="insta-post"><div class="insta-post-placeholder" style="background:linear-gradient(135deg,#F5C842,#E9A84C)">🎭</div><div class="insta-post-overlay">Ver en Instagram</div></div>
+        <div class="insta-post"><div class="insta-post-placeholder" style="background:linear-gradient(135deg,#0D2B1A,#1A3D28)">🦋</div><div class="insta-post-overlay">Ver en Instagram</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom:16px">
+          <div class="nav-logo-icon">🌿</div>
+          <div class="nav-logo-text" style="color:var(--blanco)">
+            RNA Misiones
+            <div class="nav-logo-sub" style="color:rgba(255,255,255,0.45)">Ruta de la Niñez y Adolescencia</div>
+          </div>
+        </div>
+        <p class="footer-tagline">
+          Conectando familias, comunidades y emprendimientos en los 79 municipios de la Provincia de Misiones, Argentina.
+        </p>
+        <div class="footer-social-links">
+          <a href="https://instagram.com/rnamisiones" target="_blank" rel="noopener" class="footer-social" aria-label="Instagram">📸</a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" class="footer-social" aria-label="Facebook">📘</a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="footer-social" aria-label="YouTube">▶️</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">La Ruta</div>
+        <ul class="footer-links">
+          <li><a href="#credibilidad">Quiénes Somos</a></li>
+          <li><a href="#pilares">Pilares de Impacto</a></li>
+          <li><a href="#" onclick="openExplorador();return false">Mapa Interactivo</a></li>
+          <li><a href="#alianzas">Alianzas</a></li>
+          <li><a href="#crecemos">Trabajá con Nosotros</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Municipios</div>
+        <ul class="footer-links">
+          <li><a href="#">Posadas</a></li>
+          <li><a href="#">Puerto Iguazú</a></li>
+          <li><a href="#">Oberá</a></li>
+          <li><a href="#">San Ignacio</a></li>
+          <li><a href="#" onclick="openExplorador();return false">Ver todos los 79 →</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Institucional</div>
+        <ul class="footer-links">
+          <li><a href="https://prismadigital.com.ar" target="_blank" rel="noopener">Revista Prisma Digital</a></li>
+          <li><a href="#">Declaración de Interés Provincial</a></li>
+          <li><a href="#">Términos y Condiciones</a></li>
+          <li><a href="#">Política de Privacidad</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-credits">
+        © 2025 La Ruta de la Niñez y la Adolescencia de Misiones · Impulsada por <a href="https://prismadigital.com.ar" target="_blank" rel="noopener">Revista Prisma Digital</a>
+      </div>
+      <div class="declaracion-footer">
+        ★ Declarada de Interés Provincial · Cámara de Representantes de Misiones
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /landing-home -->
+
+
+<!-- ============================================================
+     LANDING #2 — EXPLORADOR DE MUNICIPIOS
+     ============================================================ -->
+<div id="landing-explorador" class="landing">
+
+  <nav class="explorador-nav">
+    <button class="exp-back-btn" onclick="closeExplorador()">
+      ← Volver al Inicio
+    </button>
+    <div class="exp-title">Explorador de Municipios · Misiones</div>
+    <div class="exp-search">
+      <span class="exp-search-icon">🔍</span>
+      <input type="text" placeholder="Buscar municipio..." id="muni-search" oninput="searchMunicipios(this.value)">
+    </div>
+  </nav>
+
+  <div class="explorador-layout">
+    <!-- Sidebar -->
+    <aside class="exp-sidebar">
+      <div class="exp-filter-section">
+        <div class="exp-filter-title">Tipo de actividad</div>
+        <div class="exp-filter-pills">
+          <button class="exp-filter-pill active" onclick="setExpFilter(this,'todos')">
+            <span class="exp-pill-icon">🗺️</span> Todos
+            <span class="exp-pill-count">79</span>
+          </button>
+          <button class="exp-filter-pill" onclick="setExpFilter(this,'alojamiento')">
+            <span class="exp-pill-icon">🏡</span> Alojamientos
+            <span class="exp-pill-count">142</span>
+          </button>
+          <button class="exp-filter-pill" onclick="setExpFilter(this,'gastronomia')">
+            <span class="exp-pill-icon">🍽️</span> Gastronomía
+            <span class="exp-pill-count">98</span>
+          </button>
+          <button class="exp-filter-pill" onclick="setExpFilter(this,'cultura')">
+            <span class="exp-pill-icon">🎭</span> Cultura
+            <span class="exp-pill-count">64</span>
+          </button>
+          <button class="exp-filter-pill" onclick="setExpFilter(this,'naturaleza')">
+            <span class="exp-pill-icon">🌲</span> Naturaleza
+            <span class="exp-pill-count">87</span>
+          </button>
+          <button class="exp-filter-pill" onclick="setExpFilter(this,'servicios')">
+            <span class="exp-pill-icon">⚙️</span> Servicios
+            <span class="exp-pill-count">45</span>
+          </button>
+        </div>
+      </div>
+      <div class="exp-municipios-list">
+        <div class="exp-filter-title">Municipios Destacados</div>
+        <div id="municipios-list-container"></div>
+      </div>
+    </aside>
+
+    <!-- Main area -->
+    <main class="exp-main">
+      <!-- Map view -->
+      <div class="exp-map-view" id="exp-map-view">
+        <div style="text-align:center; margin-bottom:24px; position:relative;z-index:1;">
+          <div class="section-label" style="color:var(--verde-medio); justify-content:center;">
+            <span style="display:inline-flex;align-items:center;gap:8px">79 Municipios · Hacé clic en cualquier punto</span>
+          </div>
+          <h2 class="section-title" style="font-size:1.6rem; color:var(--texto-oscuro)">Provincia de <em>Misiones</em></h2>
+        </div>
+        <div class="exp-map-svg-wrapper" id="svg-mapa-explore-container">
+          <!-- Renderizado por JS -->
+        </div>
+        <div class="exp-map-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--naranja)"></div> Capital provincial</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--verde-claro)"></div> Municipio con emprendimientos</div>
+          <div class="legend-item"><div class="legend-dot" style="background:rgba(91,164,194,0.5); border: 1px dashed var(--azul-cielo)"></div> Ríos (Paraná / Uruguay)</div>
+        </div>
+      </div>
+
+      <!-- Municipality detail view -->
+      <div class="exp-municipio-detail" id="exp-municipio-detail">
+        <div class="muni-detail-header">
+          <button class="muni-back" onclick="backToMap()">← Volver al mapa</button>
+          <div class="muni-name" id="muni-detail-name">Posadas</div>
+          <div class="muni-region" id="muni-detail-region">Capital Provincial · Sur de Misiones</div>
+          <div class="muni-stats-row">
+            <div class="muni-stat">
+              <div class="muni-stat-num" id="muni-stat-1">24</div>
+              <div class="muni-stat-label">Emprendimientos</div>
+            </div>
+            <div class="muni-stat">
+              <div class="muni-stat-num" id="muni-stat-2">8</div>
+              <div class="muni-stat-label">Categorías</div>
+            </div>
+            <div class="muni-stat">
+              <div class="muni-stat-num" id="muni-stat-3">★ 4.8</div>
+              <div class="muni-stat-label">Valoración media</div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="font-family:var(--font-display);font-size:1.3rem;margin-bottom:16px;color:var(--texto-oscuro)">Emprendimientos Adheridos</h3>
+        <div class="muni-emprendimientos-grid" id="muni-emprendimientos-grid">
+          <!-- JS rendered -->
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Sticky CTA (visible in explorador) -->
+  <div class="sticky-cta visible">
+    <button class="sticky-cta-btn" onclick="openAdhesionModal()">
+      ✨ ¿Querés ser parte?
+    </button>
+  </div>
+
+</div><!-- /landing-explorador -->
+
+
+<!-- ============================================================
+     MODAL — FORMULARIO DE ADHESIÓN
+     ============================================================ -->
+<div class="modal-overlay" id="adhesion-modal" onclick="closeModalOnOverlay(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeAdhesionModal()" aria-label="Cerrar">✕</button>
+      <div class="modal-eyebrow">Ruta de la Niñez · Misiones</div>
+      <div class="modal-title">Sumá tu propuesta</div>
+      <div class="modal-subtitle">Revisaremos tu solicitud en 48–72 hs hábiles</div>
+    </div>
+    <div class="modal-body">
+      <div id="modal-form-content">
+        <form onsubmit="handleModalSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Nombre completo <span>*</span></label>
+              <input type="text" class="form-input" required placeholder="Nombre y apellido">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Teléfono <span>*</span></label>
+              <input type="tel" class="form-input" required placeholder="+54 376 ...">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email <span>*</span></label>
+            <input type="email" class="form-input" required placeholder="tu@email.com">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Municipio <span>*</span></label>
+              <select class="form-select form-select-muni" required id="modal-municipio-select">
+                <option value="">Seleccioná...</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Categoría <span>*</span></label>
+              <select class="form-select" required>
+                <option value="">Seleccioná...</option>
+                <option>Alojamiento</option><option>Gastronomía</option>
+                <option>Cultura y Entretenimiento</option><option>Naturaleza y Aventura</option>
+                <option>Servicios Turísticos</option><option>Evento</option><option>Otro</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nombre del Emprendimiento / Evento <span>*</span></label>
+            <input type="text" class="form-input" required placeholder="Nombre de tu propuesta">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Descripción breve</label>
+            <textarea class="form-textarea" placeholder="Contanos qué ofrecés y por qué querés ser parte de la Ruta..."></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-checkbox-label">
+              <input type="checkbox" required>
+              Acepto los <a href="#" style="color:var(--verde-medio)">términos y condiciones</a> de la Ruta de la Niñez y la Adolescencia de Misiones
+            </label>
+          </div>
+          <button type="submit" class="form-submit">Enviar Propuesta →</button>
+        </form>
+      </div>
+      <div class="modal-success" id="modal-success">
+        <div class="success-checkmark">🌿</div>
+        <h3>¡Propuesta recibida!</h3>
+        <p>Revisaremos tu propuesta y nos contactaremos en <strong>48–72 horas hábiles</strong>.<br>Bienvenide a la Ruta de la Niñez y la Adolescencia de Misiones.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+// ─── NAV SCROLL ──────────────────────────────────────────────
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+// ─── MOBILE MENU ──────────────────────────────────────────────
+function toggleMobileMenu() {
+  const links = document.querySelector('.nav-links');
+  links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+  if (links.style.display === 'flex') {
+    Object.assign(links.style, {
+      flexDirection: 'column', position: 'fixed',
+      top: '72px', left: '0', right: '0',
+      background: 'rgba(13,43,26,0.98)', padding: '24px 5vw',
+      gap: '16px', zIndex: '999'
+    });
+  }
+}
+
+// ─── LEAF ANIMATION ─────────────────────────────────────────
+const LEAF_SVGS = [
+  `<svg width="22" height="28" viewBox="0 0 22 28"><path d="M11,2 Q18,5 20,14 Q18,22 11,26 Q4,22 2,14 Q4,5 11,2Z" fill="rgba(116,198,157,0.35)"/></svg>`,
+  `<svg width="18" height="24" viewBox="0 0 18 24"><path d="M9,1 Q16,6 16,12 Q13,20 9,23 Q5,20 2,12 Q2,6 9,1Z" fill="rgba(74,198,157,0.25)"/></svg>`,
+  `<svg width="28" height="16" viewBox="0 0 28 16"><ellipse cx="14" cy="8" rx="13" ry="7" fill="rgba(116,198,157,0.2)"/></svg>`,
+];
+(function spawnLeaves() {
+  const container = document.getElementById('hero-leaves');
+  for (let i = 0; i < 14; i++) {
+    const leaf = document.createElement('div');
+    leaf.className = 'leaf';
+    leaf.innerHTML = LEAF_SVGS[i % LEAF_SVGS.length];
+    leaf.style.cssText = `
+      left: ${Math.random() * 100}%;
+      animation-duration: ${12 + Math.random() * 18}s;
+      animation-delay: ${Math.random() * 20}s;
+    `;
+    container.appendChild(leaf);
+  }
+})();
+
+// ─── SCROLL REVEAL ───────────────────────────────────────────
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ─── TOOLTIP (MAP PREVIEW) ───────────────────────────────────
+function showTooltip(e, text) {
+  const tt = document.getElementById('mapa-tooltip');
+  const svg = e.target.closest('svg');
+  const rect = svg.getBoundingClientRect();
+  const cx = parseFloat(e.target.getAttribute('cx'));
+  const cy = parseFloat(e.target.getAttribute('cy'));
+  const vb = svg.viewBox.baseVal;
+  const scaleX = rect.width / vb.width;
+  const scaleY = rect.height / vb.height;
+  tt.style.left = (cx * scaleX) + 'px';
+  tt.style.top = (cy * scaleY) + 'px';
+  tt.textContent = text;
+  tt.style.opacity = '1';
+}
+function hideTooltip() {
+  document.getElementById('mapa-tooltip').style.opacity = '0';
+}
+
+// ─── MAP FILTERS ─────────────────────────────────────────────
+function filterMap(btn, type) {
+  btn.closest('.mapa-filters').querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+}
+function setExpFilter(btn, type) {
+  btn.closest('.exp-filter-pills').querySelectorAll('.exp-filter-pill').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ─── LANDING SWITCHING ───────────────────────────────────────
+function openExplorador() {
+  document.getElementById('landing-home').classList.remove('active');
+  document.getElementById('landing-explorador').classList.add('active');
+  window.scrollTo(0, 0);
+  renderMunicipiosList();
+}
+function closeExplorador() {
+  document.getElementById('landing-explorador').classList.remove('active');
+  document.getElementById('landing-home').classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// ─── MUNICIPALITY DATA ───────────────────────────────────────
+const ALL_MUNICIPIOS_NAMES = ["25 de Mayo", "Alba Posse", "Almafuerte", "Apóstoles", "Aristóbulo del Valle", "Arroyo del Medio", "Azara", "Bernardo de Irigoyen", "Bonpland", "Caá Yarí", "Candelaria", "Capioví", "Caraguatay", "Cerro Azul", "Cerro Corá", "Colonia Alberdi", "Colonia Aurora", "Colonia Delicia", "Colonia Polana", "Colonia Victoria", "Colonia Wanda", "Comandante Andresito", "Concepción de la Sierra", "Corpus Christi", "Dos Arroyos", "Dos de Mayo", "Dos Hermanas", "El Alcázar", "El Soberbio", "Eldorado", "Fachinal", "Florentino Ameghino", "Fracrán", "Garuhapé", "Garupá", "General Alvear", "General Urquiza", "Gobernador López", "Gobernador Roca", "Guaraní", "Hipólito Yrigoyen", "Itacaruaré", "Jardín América", "Leandro N. Alem", "Loreto", "Los Helechos", "Mártires", "Mojón Grande", "Montecarlo", "Nueve de Julio", "Oberá", "Olegario Víctor Andrade", "Panambí", "Posadas", "Pozo Azul", "Profundidad", "Puerto Esperanza", "Puerto Iguazú", "Puerto Leoni", "Puerto Libertad", "Puerto Piray", "Puerto Rico", "Ruiz de Montoya", "Salto Encantado", "San Antonio", "San Ignacio", "San Javier", "San José", "San Martín", "San Pedro", "San Vicente", "Santa Ana", "Santa María", "Santiago de Liniers", "Santo Pipó", "Tres Capones"].sort((a,b) => a.localeCompare(b));
+
+const MUNICIPIOS_DATA = [
+  { name: 'Posadas', region: 'Capital Provincial · Sur de Misiones', count: 24, icon: '🏙️',
+    emprendimientos: [
+      { cat: 'Cultura', name: 'Centro Cultural Misionero', desc: 'Exposiciones, talleres y eventos para toda la familia.', icon: '🎭' },
+      { cat: 'Gastronomía', name: 'Sabores del Litoral', desc: 'Cocina regional con ingredientes locales. Menú infantil.', icon: '🍽️' },
+      { cat: 'Naturaleza', name: 'Paseo Costanera', desc: 'Recorrido ribereño con vistas al río Paraná.', icon: '🌊' },
+      { cat: 'Alojamiento', name: 'Posada Nativa', desc: 'Hospedaje familiar en el corazón de la ciudad.', icon: '🏡' },
+    ]
+  },
+  { name: 'Puerto Iguazú', region: 'Noroeste · Cataratas del Iguazú', count: 31, icon: '🌊',
+    emprendimientos: [
+      { cat: 'Naturaleza', name: 'Cataratas Experience', desc: 'Guías certificados para familias con niños.', icon: '🌿' },
+      { cat: 'Alojamiento', name: 'Refugio Selva', desc: 'Cabañas en la selva con piscina natural.', icon: '🏕️' },
+      { cat: 'Cultura', name: 'Mundo Guaraní', desc: 'Centro de interpretación cultural y artesanías.', icon: '🎨' },
+      { cat: 'Gastronomía', name: 'La Yuca Verde', desc: 'Cocina fusión latinoamericana. Ambiente familiar.', icon: '🥗' },
+    ]
+  },
+  { name: 'Oberá', region: 'Centro · Capital Nacional del Inmigrante', count: 18, icon: '🎉',
+    emprendimientos: [
+      { cat: 'Cultura', name: 'Museo Región de la Selva', desc: 'Historia y biodiversidad misionera para toda la familia.', icon: '🏛️' },
+      { cat: 'Gastronomía', name: 'Cervecería Las Colonias', desc: 'Gastronomía de colonia con actividades para niños.', icon: '🍺' },
+      { cat: 'Naturaleza', name: 'Chacra La Verde', desc: 'Turismo rural con contacto directo con la naturaleza.', icon: '🌾' },
+      { cat: 'Eventos', name: 'Festival de las Colectividades', desc: 'El evento más multicultural de la provincia.', icon: '🌍' },
+    ]
+  },
+  { name: 'San Ignacio', region: 'Sur · Ruinas Jesuíticas', count: 12, icon: '🏛️',
+    emprendimientos: [
+      { cat: 'Cultura', name: 'Ruinas de San Ignacio Mini', desc: 'Patrimonio de la Humanidad. Visitas guiadas.', icon: '🏛️' },
+      { cat: 'Alojamiento', name: 'Hostal Jesuítico', desc: 'Alojamiento histórico con jardín tropical.', icon: '🌺' },
+    ]
+  },
+  { name: 'Colonia Wanda', region: 'Norte · Piedras preciosas', count: 9, icon: '💎',
+    emprendimientos: [
+      { cat: 'Turismo', name: 'Minas de Wanda', desc: 'Extracción artesanal de amatistas y turmalinas.', icon: '💎' },
+    ]
+  },
+  { name: 'Eldorado', region: 'Norte · Ciudad de las Colonias', count: 15, icon: '🌲', emprendimientos: [] },
+  { name: 'Apóstoles', region: 'Centro-Sur · Tierra del Mate', count: 11, icon: '🧉', emprendimientos: [] },
+  { name: 'Montecarlo', region: 'Norte · Valle del Paraná', count: 8, icon: '🌿', emprendimientos: [] },
+  { name: 'Aristóbulo del Valle', region: 'Centro · Selva profunda', count: 13, icon: '🌳', emprendimientos: [] },
+];
+
+const MUNICIPIOS = ALL_MUNICIPIOS_NAMES.map((name, index) => {
+  const existing = MUNICIPIOS_DATA.find(m => m.name === name);
+  
+  // Generating a uniform scatter within Misiones shape for the unlisted ones
+  // Hardcoded known places roughly
+  let x = 130, y = 220;
+  if(name === 'Posadas') { x = 95; y = 430; }
+  else if(name === 'Puerto Iguazú') { x = 60; y = 40; }
+  else if(name === 'Oberá') { x = 152; y = 330; }
+  else if(name === 'San Ignacio') { x = 100; y = 390; }
+  else if(name === 'Eldorado') { x = 80; y = 170; }
+  else if(name === 'Apóstoles') { x = 160; y = 410; }
+  else if(name === 'Bernardo de Irigoyen') { x = 240; y = 100; }
+  else if(name === 'El Soberbio') { x = 220; y = 240; }
+  else if(name === 'San Pedro') { x = 190; y = 160; }
+  else {
+    // pseudo random scatter to fill the map realistically
+    const mappedIndex = index * 17;
+    const vertical = (mappedIndex % 80) / 80; // 0 to 1
+    y = 50 + vertical * 380;
+    // Misiones width roughly starts at 90-120 left, to 140-240 right
+    // Interpolate width based on y
+    const leftEdge = 95 - 40 * (1-vertical); 
+    const rightEdge = leftEdge + 40 + 70 * Math.sin(vertical * Math.PI);
+    const horizontal = (mappedIndex % 11) / 11;
+    x = leftEdge + horizontal * (rightEdge - leftEdge);
+  }
+
+  return existing ? { ...existing, x, y } : { 
+    name, 
+    region: 'Misiones, Argentina', 
+    count: Math.floor(2+Math.random()*15), 
+    icon: '📍', 
+    emprendimientos: [],
+    x, y
+  };
+});
+
+// MAP RENDERING
+function generateSVGMap(isExploreMode) {
+  // Better Misiones Shape + departamental lines (approximate)
+  const misionesPath = `
+    M 90,440 L 75,420 L 70,390 L 50,350 L 40,300 L 35,240 
+    L 45,170 L 60,100 L 60,40 L 90,30 L 130,45 L 160,55 
+    L 200,70 L 230,95 L 245,115 L 230,160 L 210,190 L 225,240 
+    L 200,290 L 180,340 L 165,390 L 140,410 L 130,440 L 110,450 Z
+  `;
+
+  const departamentalLines = `
+    M 70,390 L 120,400 M 50,350 L 140,360 M 40,300 L 160,330 
+    M 35,240 L 180,270 M 45,170 L 200,210 M 60,100 L 230,140
+    M 120,400 L 130,440 M 140,360 L 165,390 M 160,330 L 200,290
+  `;
+
+  const dots = MUNICIPIOS.map(m => {
+    const isCapital = m.name === 'Posadas';
+    const radius = isCapital ? 7 : 4;
+    const cssClass = isCapital ? 'municipio-dot capital' : 'municipio-dot';
+    const clickFn = isExploreMode ? `openMunicipioDetail('${m.name}')` : `openMunicipioFromMap('${m.name}')`;
+    
+    return `<circle class="${cssClass}" cx="${m.x}" cy="${m.y}" r="${radius}" 
+             onmouseenter="showTooltip(event, '${m.name}')" 
+             onmouseleave="hideTooltip()"
+             onclick="${clickFn}"></circle>`;
+  }).join('');
+
+  return `
+    <svg viewBox="0 0 280 480" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; ${isExploreMode ? 'max-width:480px; filter:drop-shadow(0 16px 48px rgba(26,26,46,0.18))' : ''}">
+      <defs>
+        <radialGradient id="mapGlow${isExploreMode ? '2' : ''}" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#2D94C4" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#1A1A2E" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      ${isExploreMode ? '<rect width="280" height="480" fill="rgba(247,242,234,0.5)" rx="16"/>' : ''}
+      <ellipse cx="140" cy="240" rx="120" ry="210" fill="url(#mapGlow${isExploreMode ? '2' : ''})"/>
+      
+      <!-- Prov border -->
+      <path d="${misionesPath}" class="mapa-provincia" style="fill:var(--verde-selva); stroke:var(--verde-medio); stroke-width:1.5" />
+      
+      <!-- Dept lines -->
+      <path d="${departamentalLines}" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="3,3" />
+
+      <!-- Parana river left -->
+      <path d="M 90,440 L 75,420 L 70,390 L 50,350 L 40,300 L 35,240 L 45,170 L 60,100 L 60,40" fill="none" stroke="rgba(45,148,196,0.4)" stroke-width="3" />
+      <!-- Uruguay river right -->
+      <path d="M 245,115 L 230,160 L 210,190 L 225,240 L 200,290 L 180,340 L 165,390 L 140,410 L 130,440 L 110,450" fill="none" stroke="rgba(45,148,196,0.4)" stroke-width="3" />
+      
+      ${dots}
+    </svg>
+  `;
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  const selects = document.querySelectorAll('.form-select-muni');
+  selects.forEach(sel => {
+    sel.innerHTML += ALL_MUNICIPIOS_NAMES.map(m => `<option value="${m}">${m}</option>`).join('');
+  });
+
+  const previewContainer = document.getElementById('svg-mapa-preview-container');
+  if (previewContainer) previewContainer.innerHTML = generateSVGMap(false);
+
+  const exploreContainer = document.getElementById('svg-mapa-explore-container');
+  if (exploreContainer) exploreContainer.innerHTML = generateSVGMap(true);
+});
+
+function renderMunicipiosList() {
+  const container = document.getElementById('municipios-list-container');
+  container.innerHTML = MUNICIPIOS.map(m => `
+    <button class="exp-municipio-btn" onclick="openMunicipioDetail('${m.name}')">
+      <span class="exp-muni-dot"></span>
+      <span style="flex:1">${m.name}</span>
+      <span class="exp-muni-count">${m.count}</span>
+    </button>
+  `).join('');
+}
+
+function openMunicipioFromMap(name) { openExplorador(); setTimeout(() => openMunicipioDetail(name), 100); }
+
+function openMunicipioDetail(name) {
+  const muni = MUNICIPIOS.find(m => m.name === name) || 
+    { name, region: 'Misiones, Argentina', count: Math.floor(5+Math.random()*20), icon: '🏘️', emprendimientos: [] };
+  
+  document.getElementById('exp-map-view').style.display = 'none';
+  const detail = document.getElementById('exp-municipio-detail');
+  detail.classList.add('visible');
+  
+  document.getElementById('muni-detail-name').textContent = muni.name;
+  document.getElementById('muni-detail-region').textContent = muni.region;
+  document.getElementById('muni-stat-1').textContent = muni.count;
+  document.getElementById('muni-stat-2').textContent = Math.min(8, Math.ceil(muni.count / 3));
+  document.getElementById('muni-stat-3').textContent = '★ ' + (4.4 + Math.random() * 0.6).toFixed(1);
+  
+  // Pre-fill modal municipio
+  const sel = document.getElementById('modal-municipio-select');
+  if (sel) { for (let opt of sel.options) { if (opt.value === name) { sel.value = name; break; } } }
+
+  const grid = document.getElementById('muni-emprendimientos-grid');
+  const emprs = muni.emprendimientos.length ? muni.emprendimientos : [
+    { cat: 'Por confirmar', name: 'Emprendimiento Local', desc: 'Próximamente disponible en el directorio.', icon: muni.icon || '🏘️' }
+  ];
+  grid.innerHTML = emprs.map(e => `
+    <div class="empr-card">
+      <div class="empr-img">${e.icon}</div>
+      <div class="empr-body">
+        <div class="empr-cat">${e.cat}</div>
+        <div class="empr-name">${e.name}</div>
+        <div class="empr-desc">${e.desc}</div>
+      </div>
+    </div>
+  `).join('');
+  
+  document.querySelectorAll('.exp-municipio-btn').forEach(btn => btn.classList.toggle('active', btn.textContent.includes(name)));
+}
+
+function backToMap() {
+  document.getElementById('exp-map-view').style.display = '';
+  document.getElementById('exp-municipio-detail').classList.remove('visible');
+  document.querySelectorAll('.exp-municipio-btn').forEach(b => b.classList.remove('active'));
+}
+
+function searchMunicipios(query) {
+  const q = query.toLowerCase();
+  document.querySelectorAll('.exp-municipio-btn').forEach(btn => {
+    btn.style.display = btn.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+
+// ─── MODAL ───────────────────────────────────────────────────
+function openAdhesionModal() {
+  document.getElementById('adhesion-modal').classList.add('visible');
+  document.body.style.overflow = 'hidden';
+}
+function closeAdhesionModal() {
+  document.getElementById('adhesion-modal').classList.remove('visible');
+  document.body.style.overflow = '';
+}
+function closeModalOnOverlay(e) {
+  if (e.target === document.getElementById('adhesion-modal')) closeAdhesionModal();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAdhesionModal(); });
+
+function handleModalSubmit(e) {
+  e.preventDefault();
+  document.getElementById('modal-form-content').style.display = 'none';
+  document.getElementById('modal-success').classList.add('visible');
+}
+function handleContactSubmit(e) {
+  e.preventDefault();
+  document.getElementById('contact-form-content').style.display = 'none';
+  document.getElementById('contact-success').style.display = 'block';
+}
+
+// ─── COUNTER ANIMATION ───────────────────────────────────────
+function animateCounter(el, target, suffix = '') {
+  const start = performance.now();
+  const duration = 1800;
+  const isPlus = suffix.includes('+');
+  function step(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.round(eased * target);
+    el.textContent = current + (isPlus && progress > 0.5 ? '+' : '');
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = target + (isPlus ? '+' : '');
+  }
+  requestAnimationFrame(step);
+}
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('[data-count]').forEach(el => {
+        const raw = el.getAttribute('data-count');
+        const num = parseInt(raw);
+        const suffix = raw.includes('+') ? '+' : '';
+        animateCounter(el, num, suffix);
+      });
+      statsObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.hero-stats').forEach(el => statsObserver.observe(el));
+</script>
+</body>
+</html>
