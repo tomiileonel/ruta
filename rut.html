@@ -10,6 +10,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<!-- Leaflet JS Libraries for Web Mapping -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <style>
 /* ============================================================
    DESIGN TOKENS
@@ -1649,6 +1652,24 @@ button { cursor: pointer; font-family: var(--font-body); border: none; }
   .hero-ctas { flex-direction: column; align-items: flex-start; }
   .hero-badge { font-size: 0.65rem; }
 }
+
+/* Sobrescribir estilos por defecto de Leaflet para el tooltip */
+.leaflet-tooltip.mapa-tooltip-rna {
+  background: rgba(13,43,26,0.95);
+  color: #FDFCFE;
+  border: 1px solid rgba(116,198,157,0.3);
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 6px 12px;
+}
+.leaflet-tooltip.mapa-tooltip-rna::before {
+  border-top-color: rgba(13,43,26,0.95);
+}
+/* Ocultar logo de atribución muy invasivo */
+.leaflet-control-attribution { opacity: 0.6; font-size: 0.65rem; }
 </style>
 </head>
 <body>
@@ -1832,9 +1853,7 @@ button { cursor: pointer; font-family: var(--font-body); border: none; }
       <div class="mapa-preview-visual reveal reveal-delay-2">
         <div class="mapa-frame">
           <div id="mapa-tooltip" class="mapa-tooltip"></div>
-          <div class="mapa-svg-container" id="svg-mapa-preview-container">
-            <!-- Renderizado por JS -->
-          </div>
+          <div id="mapa-interactivo-preview" style="width: 100%; height: 440px; border-radius: var(--r-md); z-index: 1;"></div>
           <div class="mapa-filters" style="margin-top:16px;">
             <span style="color:rgba(255,255,255,0.3); font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; width:100%; margin-bottom:4px;">Activar vista:</span>
             <button class="filter-pill active">Todos</button>
@@ -2153,9 +2172,7 @@ button { cursor: pointer; font-family: var(--font-body); border: none; }
           </div>
           <h2 class="section-title" style="font-size:1.6rem; color:var(--texto-oscuro)">Provincia de <em>Misiones</em></h2>
         </div>
-        <div class="exp-map-svg-wrapper" id="svg-mapa-explore-container">
-          <!-- Renderizado por JS -->
-        </div>
+        <div id="mapa-interactivo-misiones" style="width: 100%; height: 600px; border-radius: var(--r-md); box-shadow: 0 16px 48px var(--sombra-suave); z-index: 1;"></div>
         <div class="exp-map-legend">
           <div class="legend-item"><div class="legend-dot" style="background:var(--naranja)"></div> Capital provincial</div>
           <div class="legend-item"><div class="legend-dot" style="background:var(--verde-claro)"></div> Municipio con emprendimientos</div>
@@ -2361,6 +2378,14 @@ function openExplorador() {
   document.getElementById('landing-explorador').classList.add('active');
   window.scrollTo(0, 0);
   renderMunicipiosList();
+  
+  // Darle un instante al navegador para aplicar el display:block antes de recalcular
+  setTimeout(() => {
+    initMapaReal(); // Nos aseguramos de inicializarlo si no se hizo
+    if (mapaMisiones) {
+      mapaMisiones.invalidateSize(); // Obliga a Leaflet a recalcular su tamaño
+    }
+  }, 150);
 }
 function closeExplorador() {
   document.getElementById('landing-explorador').classList.remove('active');
@@ -2369,141 +2394,147 @@ function closeExplorador() {
 }
 
 // ─── MUNICIPALITY DATA ───────────────────────────────────────
-const ALL_MUNICIPIOS_NAMES = ["25 de Mayo", "Alba Posse", "Almafuerte", "Apóstoles", "Aristóbulo del Valle", "Arroyo del Medio", "Azara", "Bernardo de Irigoyen", "Bonpland", "Caá Yarí", "Candelaria", "Capioví", "Caraguatay", "Cerro Azul", "Cerro Corá", "Colonia Alberdi", "Colonia Aurora", "Colonia Delicia", "Colonia Polana", "Colonia Victoria", "Colonia Wanda", "Comandante Andresito", "Concepción de la Sierra", "Corpus Christi", "Dos Arroyos", "Dos de Mayo", "Dos Hermanas", "El Alcázar", "El Soberbio", "Eldorado", "Fachinal", "Florentino Ameghino", "Fracrán", "Garuhapé", "Garupá", "General Alvear", "General Urquiza", "Gobernador López", "Gobernador Roca", "Guaraní", "Hipólito Yrigoyen", "Itacaruaré", "Jardín América", "Leandro N. Alem", "Loreto", "Los Helechos", "Mártires", "Mojón Grande", "Montecarlo", "Nueve de Julio", "Oberá", "Olegario Víctor Andrade", "Panambí", "Posadas", "Pozo Azul", "Profundidad", "Puerto Esperanza", "Puerto Iguazú", "Puerto Leoni", "Puerto Libertad", "Puerto Piray", "Puerto Rico", "Ruiz de Montoya", "Salto Encantado", "San Antonio", "San Ignacio", "San Javier", "San José", "San Martín", "San Pedro", "San Vicente", "Santa Ana", "Santa María", "Santiago de Liniers", "Santo Pipó", "Tres Capones"].sort((a,b) => a.localeCompare(b));
-
-const MUNICIPIOS_DATA = [
-  { name: 'Posadas', region: 'Capital Provincial · Sur de Misiones', count: 24, icon: '🏙️',
-    emprendimientos: [
-      { cat: 'Cultura', name: 'Centro Cultural Misionero', desc: 'Exposiciones, talleres y eventos para toda la familia.', icon: '🎭' },
-      { cat: 'Gastronomía', name: 'Sabores del Litoral', desc: 'Cocina regional con ingredientes locales. Menú infantil.', icon: '🍽️' },
-      { cat: 'Naturaleza', name: 'Paseo Costanera', desc: 'Recorrido ribereño con vistas al río Paraná.', icon: '🌊' },
-      { cat: 'Alojamiento', name: 'Posada Nativa', desc: 'Hospedaje familiar en el corazón de la ciudad.', icon: '🏡' },
-    ]
-  },
-  { name: 'Puerto Iguazú', region: 'Noroeste · Cataratas del Iguazú', count: 31, icon: '🌊',
-    emprendimientos: [
-      { cat: 'Naturaleza', name: 'Cataratas Experience', desc: 'Guías certificados para familias con niños.', icon: '🌿' },
-      { cat: 'Alojamiento', name: 'Refugio Selva', desc: 'Cabañas en la selva con piscina natural.', icon: '🏕️' },
-      { cat: 'Cultura', name: 'Mundo Guaraní', desc: 'Centro de interpretación cultural y artesanías.', icon: '🎨' },
-      { cat: 'Gastronomía', name: 'La Yuca Verde', desc: 'Cocina fusión latinoamericana. Ambiente familiar.', icon: '🥗' },
-    ]
-  },
-  { name: 'Oberá', region: 'Centro · Capital Nacional del Inmigrante', count: 18, icon: '🎉',
-    emprendimientos: [
-      { cat: 'Cultura', name: 'Museo Región de la Selva', desc: 'Historia y biodiversidad misionera para toda la familia.', icon: '🏛️' },
-      { cat: 'Gastronomía', name: 'Cervecería Las Colonias', desc: 'Gastronomía de colonia con actividades para niños.', icon: '🍺' },
-      { cat: 'Naturaleza', name: 'Chacra La Verde', desc: 'Turismo rural con contacto directo con la naturaleza.', icon: '🌾' },
-      { cat: 'Eventos', name: 'Festival de las Colectividades', desc: 'El evento más multicultural de la provincia.', icon: '🌍' },
-    ]
-  },
-  { name: 'San Ignacio', region: 'Sur · Ruinas Jesuíticas', count: 12, icon: '🏛️',
-    emprendimientos: [
-      { cat: 'Cultura', name: 'Ruinas de San Ignacio Mini', desc: 'Patrimonio de la Humanidad. Visitas guiadas.', icon: '🏛️' },
-      { cat: 'Alojamiento', name: 'Hostal Jesuítico', desc: 'Alojamiento histórico con jardín tropical.', icon: '🌺' },
-    ]
-  },
-  { name: 'Colonia Wanda', region: 'Norte · Piedras preciosas', count: 9, icon: '💎',
-    emprendimientos: [
-      { cat: 'Turismo', name: 'Minas de Wanda', desc: 'Extracción artesanal de amatistas y turmalinas.', icon: '💎' },
-    ]
-  },
-  { name: 'Eldorado', region: 'Norte · Ciudad de las Colonias', count: 15, icon: '🌲', emprendimientos: [] },
-  { name: 'Apóstoles', region: 'Centro-Sur · Tierra del Mate', count: 11, icon: '🧉', emprendimientos: [] },
-  { name: 'Montecarlo', region: 'Norte · Valle del Paraná', count: 8, icon: '🌿', emprendimientos: [] },
-  { name: 'Aristóbulo del Valle', region: 'Centro · Selva profunda', count: 13, icon: '🌳', emprendimientos: [] },
+const MUNICIPIOS_COORDS = [
+  { name: "25 de Mayo", lat: -27.3833, lng: -54.7667 },
+  { name: "Alba Posse", lat: -27.5500, lng: -54.7000 },
+  { name: "Almafuerte", lat: -27.5167, lng: -55.4000 },
+  { name: "Apóstoles", lat: -27.9167, lng: -55.7667 },
+  { name: "Aristóbulo del Valle", lat: -27.1167, lng: -54.9167 },
+  { name: "Arroyo del Medio", lat: -27.6333, lng: -55.4000 },
+  { name: "Azara", lat: -28.0667, lng: -55.6833 },
+  { name: "Bernardo de Irigoyen", lat: -26.2500, lng: -53.6500 },
+  { name: "Bonpland", lat: -27.4833, lng: -55.4667 },
+  { name: "Caá Yarí", lat: -27.4833, lng: -55.3167 },
+  { name: "Campo Grande", lat: -27.2075, lng: -54.9800 },
+  { name: "Campo Ramón", lat: -27.4559, lng: -55.0221 },
+  { name: "Campo Viera", lat: -27.3310, lng: -55.0543 },
+  { name: "Candelaria", lat: -27.4594, lng: -55.7453 },
+  { name: "Capioví", lat: -26.9333, lng: -55.0667 },
+  { name: "Caraguatay", lat: -26.6167, lng: -54.7667 },
+  { name: "Cerro Azul", lat: -27.6333, lng: -55.4833 },
+  { name: "Cerro Corá", lat: -27.5167, lng: -55.6000 },
+  { name: "Colonia Alberdi", lat: -27.3500, lng: -55.5667 },
+  { name: "Colonia Aurora", lat: -27.4667, lng: -54.4833 },
+  { name: "Colonia Delicia", lat: -26.7667, lng: -54.6167 },
+  { name: "Colonia Polana", lat: -27.1333, lng: -55.2667 },
+  { name: "Colonia Victoria", lat: -26.5000, lng: -54.5167 },
+  { name: "Colonia Wanda", lat: -25.9667, lng: -54.4667 },
+  { name: "Comandante Andresito", lat: -25.9667, lng: -54.1667 },
+  { name: "Concepción de la Sierra", lat: -27.9833, lng: -55.5167 },
+  { name: "Corpus Christi", lat: -27.1167, lng: -55.5167 },
+  { name: "Dos Arroyos", lat: -27.7000, lng: -55.2667 },
+  { name: "Dos de Mayo", lat: -27.0333, lng: -54.9667 },
+  { name: "Dos Hermanas", lat: -26.2942, lng: -53.7572 },
+  { name: "El Alcázar", lat: -26.9500, lng: -54.8000 },
+  { name: "El Soberbio", lat: -27.2981, lng: -54.1981 },
+  { name: "Eldorado", lat: -26.4078, lng: -54.6270 },
+  { name: "Fachinal", lat: -27.5833, lng: -55.7333 },
+  { name: "Florentino Ameghino", lat: -27.2333, lng: -55.0333 },
+  { name: "Fracrán", lat: -26.9333, lng: -54.2000 },
+  { name: "Garuhapé", lat: -26.8167, lng: -55.0167 },
+  { name: "Garupá", lat: -27.4817, lng: -55.8294 },
+  { name: "General Alvear", lat: -27.3500, lng: -55.1667 },
+  { name: "General Urquiza", lat: -27.0333, lng: -55.1500 },
+  { name: "Gobernador López", lat: -27.6667, lng: -55.2500 },
+  { name: "Gobernador Roca", lat: -27.1833, lng: -55.4667 },
+  { name: "Guaraní", lat: -27.2167, lng: -55.2667 },
+  { name: "Hipólito Yrigoyen", lat: -27.0833, lng: -55.2833 },
+  { name: "Itacaruaré", lat: -27.1167, lng: -54.9667 },
+  { name: "Jardín América", lat: -27.0439, lng: -55.2269 },
+  { name: "Leandro N. Alem", lat: -27.6000, lng: -55.3167 },
+  { name: "Loreto", lat: -27.3000, lng: -55.5167 },
+  { name: "Los Helechos", lat: -27.0500, lng: -55.0333 },
+  { name: "Mártires", lat: -27.5167, lng: -55.3667 },
+  { name: "Mojón Grande", lat: -27.7167, lng: -55.0667 },
+  { name: "Montecarlo", lat: -26.5653, lng: -54.7578 },
+  { name: "Nueve de Julio", lat: -26.9333, lng: -54.6000 },
+  { name: "Oberá", lat: -27.4814, lng: -55.1233 },
+  { name: "Olegario Víctor Andrade", lat: -27.2167, lng: -55.2500 },
+  { name: "Panambí", lat: -27.7167, lng: -54.9167 },
+  { name: "Posadas", lat: -27.3919, lng: -55.9238 },
+  { name: "Pozo Azul", lat: -26.4000, lng: -54.1000 },
+  { name: "Profundidad", lat: -27.5833, lng: -55.7167 },
+  { name: "Puerto Esperanza", lat: -26.9167, lng: -54.6167 },
+  { name: "Puerto Iguazú", lat: -25.5970, lng: -54.5728 },
+  { name: "Puerto Leoni", lat: -26.8000, lng: -55.1833 },
+  { name: "Puerto Libertad", lat: -25.9167, lng: -54.5833 },
+  { name: "Puerto Piray", lat: -26.4667, lng: -54.7167 },
+  { name: "Puerto Rico", lat: -26.8000, lng: -55.0167 },
+  { name: "Ruiz de Montoya", lat: -26.9000, lng: -55.0500 },
+  { name: "Salto Encantado", lat: -27.2500, lng: -54.8333 },
+  { name: "San Antonio", lat: -26.9167, lng: -53.7333 },
+  { name: "San Ignacio", lat: -27.2561, lng: -55.5350 },
+  { name: "San Javier", lat: -27.8739, lng: -55.1348 },
+  { name: "San José", lat: -27.3333, lng: -55.7833 },
+  { name: "San Martín", lat: -27.5000, lng: -55.3000 },
+  { name: "San Pedro", lat: -26.6292, lng: -54.1133 },
+  { name: "San Vicente", lat: -26.9931, lng: -54.4869 },
+  { name: "Santa Ana", lat: -27.3500, lng: -55.5667 },
+  { name: "Santa María", lat: -27.9345, lng: -55.4071 },
+  { name: "Santiago de Liniers", lat: -26.5333, lng: -54.3500 },
+  { name: "Santo Pipó", lat: -27.1333, lng: -55.4167 },
+  { name: "Tres Capones", lat: -28.0000, lng: -55.6000 }
 ];
 
-const MUNICIPIOS = ALL_MUNICIPIOS_NAMES.map((name, index) => {
-  const existing = MUNICIPIOS_DATA.find(m => m.name === name);
-  
-  // Generating a uniform scatter within Misiones shape for the unlisted ones
-  // Hardcoded known places roughly
-  let x = 130, y = 220;
-  if(name === 'Posadas') { x = 95; y = 430; }
-  else if(name === 'Puerto Iguazú') { x = 60; y = 40; }
-  else if(name === 'Oberá') { x = 152; y = 330; }
-  else if(name === 'San Ignacio') { x = 100; y = 390; }
-  else if(name === 'Eldorado') { x = 80; y = 170; }
-  else if(name === 'Apóstoles') { x = 160; y = 410; }
-  else if(name === 'Bernardo de Irigoyen') { x = 240; y = 100; }
-  else if(name === 'El Soberbio') { x = 220; y = 240; }
-  else if(name === 'San Pedro') { x = 190; y = 160; }
-  else {
-    // pseudo random scatter to fill the map realistically
-    const mappedIndex = index * 17;
-    const vertical = (mappedIndex % 80) / 80; // 0 to 1
-    y = 50 + vertical * 380;
-    // Misiones width roughly starts at 90-120 left, to 140-240 right
-    // Interpolate width based on y
-    const leftEdge = 95 - 40 * (1-vertical); 
-    const rightEdge = leftEdge + 40 + 70 * Math.sin(vertical * Math.PI);
-    const horizontal = (mappedIndex % 11) / 11;
-    x = leftEdge + horizontal * (rightEdge - leftEdge);
-  }
+const ALL_MUNICIPIOS_NAMES = MUNICIPIOS_COORDS.map(m => m.name);
 
-  return existing ? { ...existing, x, y } : { 
-    name, 
+const MUNICIPIOS = MUNICIPIOS_COORDS.map(coord => {
+  return { 
+    name: coord.name, 
     region: 'Misiones, Argentina', 
-    count: Math.floor(2+Math.random()*15), 
+    count: Math.floor(2 + Math.random() * 15), 
     icon: '📍', 
     emprendimientos: [],
-    x, y
+    lat: coord.lat, 
+    lng: coord.lng
   };
 });
 
-// MAP RENDERING
-function generateSVGMap(isExploreMode) {
-  // Better Misiones Shape + departamental lines (approximate)
-  const misionesPath = `
-    M 90,440 L 75,420 L 70,390 L 50,350 L 40,300 L 35,240 
-    L 45,170 L 60,100 L 60,40 L 90,30 L 130,45 L 160,55 
-    L 200,70 L 230,95 L 245,115 L 230,160 L 210,190 L 225,240 
-    L 200,290 L 180,340 L 165,390 L 140,410 L 130,440 L 110,450 Z
-  `;
+// LEAFLET MAP INITIALIZATION
+let mapaMisiones;
+let mapaPreview;
 
-  const departamentalLines = `
-    M 70,390 L 120,400 M 50,350 L 140,360 M 40,300 L 160,330 
-    M 35,240 L 180,270 M 45,170 L 200,210 M 60,100 L 230,140
-    M 120,400 L 130,440 M 140,360 L 165,390 M 160,330 L 200,290
-  `;
-
-  const dots = MUNICIPIOS.map(m => {
-    const isCapital = m.name === 'Posadas';
-    const radius = isCapital ? 7 : 4;
-    const cssClass = isCapital ? 'municipio-dot capital' : 'municipio-dot';
-    const clickFn = isExploreMode ? `openMunicipioDetail('${m.name}')` : `openMunicipioFromMap('${m.name}')`;
+function initMapaReal() {
+  const isExploreMap = document.getElementById('mapa-interactivo-misiones');
+  
+  if (document.getElementById('mapa-interactivo-preview') && !mapaPreview) {
+    mapaPreview = L.map('mapa-interactivo-preview', {
+      zoomControl: false, dragging: false, scrollWheelZoom: false, doubleClickZoom: false
+    }).setView([-26.9, -54.9], 6);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(mapaPreview);
     
-    return `<circle class="${cssClass}" cx="${m.x}" cy="${m.y}" r="${radius}" 
-             onmouseenter="showTooltip(event, '${m.name}')" 
-             onmouseleave="hideTooltip()"
-             onclick="${clickFn}"></circle>`;
-  }).join('');
+    MUNICIPIOS.forEach(muni => {
+      const isCap = muni.name === 'Posadas';
+      const marker = L.circleMarker([muni.lat, muni.lng], {
+        color: '#1A3D28', weight: 1.5,
+        fillColor: isCap ? '#F4803C' : '#74C69D',
+        fillOpacity: 0.9, radius: isCap ? 6 : 4
+      }).addTo(mapaPreview);
+      
+      marker.bindTooltip(`<strong>${muni.name}</strong>`, { direction: 'top', offset: [0, -10], className: 'mapa-tooltip-rna' });
+      marker.on('click', () => { openMunicipioFromMap(muni.name); });
+    });
+  }
 
-  return `
-    <svg viewBox="0 0 280 480" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; ${isExploreMode ? 'max-width:480px; filter:drop-shadow(0 16px 48px rgba(26,26,46,0.18))' : ''}">
-      <defs>
-        <radialGradient id="mapGlow${isExploreMode ? '2' : ''}" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#2D94C4" stop-opacity="0.3"/>
-          <stop offset="100%" stop-color="#1A1A2E" stop-opacity="0"/>
-        </radialGradient>
-      </defs>
-      ${isExploreMode ? '<rect width="280" height="480" fill="rgba(247,242,234,0.5)" rx="16"/>' : ''}
-      <ellipse cx="140" cy="240" rx="120" ry="210" fill="url(#mapGlow${isExploreMode ? '2' : ''})"/>
-      
-      <!-- Prov border -->
-      <path d="${misionesPath}" class="mapa-provincia" style="fill:var(--verde-selva); stroke:var(--verde-medio); stroke-width:1.5" />
-      
-      <!-- Dept lines -->
-      <path d="${departamentalLines}" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="3,3" />
+  if (isExploreMap && !mapaMisiones) {
+    mapaMisiones = L.map('mapa-interactivo-misiones', { scrollWheelZoom: false }).setView([-26.9, -54.9], 7);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 18, minZoom: 6,
+      attribution: '&copy; OpenStreetMap &copy; CARTO'
+    }).addTo(mapaMisiones);
 
-      <!-- Parana river left -->
-      <path d="M 90,440 L 75,420 L 70,390 L 50,350 L 40,300 L 35,240 L 45,170 L 60,100 L 60,40" fill="none" stroke="rgba(45,148,196,0.4)" stroke-width="3" />
-      <!-- Uruguay river right -->
-      <path d="M 245,115 L 230,160 L 210,190 L 225,240 L 200,290 L 180,340 L 165,390 L 140,410 L 130,440 L 110,450" fill="none" stroke="rgba(45,148,196,0.4)" stroke-width="3" />
-      
-      ${dots}
-    </svg>
-  `;
+    MUNICIPIOS.forEach(muni => {
+      const isCap = muni.name === 'Posadas';
+      const marker = L.circleMarker([muni.lat, muni.lng], {
+        color: '#1A3D28', weight: 1.5,
+        fillColor: isCap ? '#F4803C' : '#74C69D',
+        fillOpacity: 0.9, radius: isCap ? 8 : 5
+      }).addTo(mapaMisiones);
+
+      marker.bindTooltip(`<strong>${muni.name}</strong>`, { direction: 'top', offset: [0, -10], className: 'mapa-tooltip-rna' });
+      marker.on('click', () => { openMunicipioDetail(muni.name); });
+    });
+  }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -2512,11 +2543,7 @@ window.addEventListener('DOMContentLoaded', () => {
     sel.innerHTML += ALL_MUNICIPIOS_NAMES.map(m => `<option value="${m}">${m}</option>`).join('');
   });
 
-  const previewContainer = document.getElementById('svg-mapa-preview-container');
-  if (previewContainer) previewContainer.innerHTML = generateSVGMap(false);
-
-  const exploreContainer = document.getElementById('svg-mapa-explore-container');
-  if (exploreContainer) exploreContainer.innerHTML = generateSVGMap(true);
+  initMapaReal();
 });
 
 function renderMunicipiosList() {
