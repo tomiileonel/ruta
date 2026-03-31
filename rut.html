@@ -153,6 +153,80 @@ button { cursor: pointer; font-family: var(--font-body); border: none; }
 }
 .nav-links a:hover { color: var(--tierra-calida); }
 .nav-links a:hover::after { transform: scaleX(1); }
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.lang-switcher {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--blanco);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--r-full);
+  cursor: pointer;
+  transition: all var(--trans-base);
+  letter-spacing: 0.05em;
+}
+.lang-toggle:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+.lang-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--verde-profundo);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--r-sm);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all var(--trans-base);
+  min-width: 65px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+.lang-switcher.open .lang-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.lang-option {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.65);
+  border: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  transition: all var(--trans-base);
+  letter-spacing: 0.05em;
+}
+.lang-option:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--blanco);
+}
+.lang-option.active {
+  background: var(--verde-medio);
+  color: var(--blanco);
+}
 .nav-cta {
   background: var(--naranja);
   color: var(--blanco) !important;
@@ -740,28 +814,7 @@ button { cursor: pointer; font-family: var(--font-body); border: none; }
   position: relative;
   z-index: 1;
 }
-/* Misiones SVG Map */
-.mapa-provincia {
-  fill: var(--verde-selva);
-  stroke: rgba(116,198,157,0.3);
-  stroke-width: 1.5;
-  transition: fill var(--trans-base);
-}
-.municipio-dot {
-  fill: var(--verde-claro);
-  cursor: pointer;
-  transition: fill var(--trans-base), r var(--trans-spring);
-  filter: drop-shadow(0 0 4px rgba(116,198,157,0.5));
-}
-.municipio-dot:hover { fill: var(--tierra-calida); r: 6; filter: drop-shadow(0 0 8px rgba(233,168,76,0.7)); }
-.municipio-dot.capital { fill: var(--naranja); r: 7; }
-.municipio-dot.capital:hover { fill: var(--amarillo); }
-.municipio-label {
-  fill: rgba(255,255,255,0.6);
-  font-family: var(--font-body);
-  font-size: 9px;
-  pointer-events: none;
-}
+/* Misiones Map - CSS antiguo de SVG eliminado para limpieza */
 .mapa-tooltip {
   position: absolute;
   background: rgba(13,43,26,0.95);
@@ -1688,17 +1741,30 @@ button { cursor: pointer; font-family: var(--font-body); border: none; }
         <div class="nav-logo-sub">Ruta de la Niñez y Adolescencia</div>
       </div>
     </div>
-    <ul class="nav-links">
-      <li><a href="#credibilidad">Quiénes Somos</a></li>
-      <li><a href="#pilares">Pilares</a></li>
-      <li><a href="#mapa-preview">Municipios</a></li>
-      <li><a href="#crecemos">Participá</a></li>
-      <li><a href="https://prismadigital.com.ar" target="_blank" rel="noopener">Prisma Digital ↗</a></li>
-      <li><a href="#" class="nav-cta" onclick="openExplorador(); return false;">Explorar Mapa →</a></li>
-    </ul>
-    <button class="nav-hamburger" aria-label="Menú" onclick="toggleMobileMenu()">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-actions">
+      <ul class="nav-links">
+        <li><a href="#credibilidad">Quiénes Somos</a></li>
+        <li><a href="#pilares">Pilares</a></li>
+        <li><a href="#mapa-preview">Municipios</a></li>
+        <li><a href="#crecemos">Participá</a></li>
+        <li><a href="https://prismadigital.com.ar" target="_blank" rel="noopener">Prisma Digital ↗</a></li>
+        <li><a href="#" class="nav-cta" onclick="openExplorador(); return false;">Explorar Mapa →</a></li>
+      </ul>
+      <div class="lang-switcher" onclick="toggleLangDropdown(event, this)">
+        <button class="lang-toggle">
+          <span class="lang-current">ES</span>
+          <span style="font-size: 0.55rem; opacity: 0.7;">▼</span>
+        </button>
+        <div class="lang-dropdown-menu">
+          <button class="lang-option active" onclick="setLang(event, 'es')">ES</button>
+          <button class="lang-option" onclick="setLang(event, 'pt')">PT</button>
+          <button class="lang-option" onclick="setLang(event, 'en')">EN</button>
+        </div>
+      </div>
+      <button class="nav-hamburger" aria-label="Menú" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -2118,9 +2184,22 @@ button { cursor: pointer; font-family: var(--font-body); border: none; }
       ← Volver al Inicio
     </button>
     <div class="exp-title">Explorador de Municipios · Misiones</div>
-    <div class="exp-search">
-      <span class="exp-search-icon">🔍</span>
-      <input type="text" placeholder="Buscar municipio..." id="muni-search" oninput="searchMunicipios(this.value)">
+    <div class="nav-actions">
+      <div class="exp-search">
+        <span class="exp-search-icon">🔍</span>
+        <input type="text" placeholder="Buscar municipio..." id="muni-search" oninput="searchMunicipios(this.value)">
+      </div>
+      <div class="lang-switcher" onclick="toggleLangDropdown(event, this)">
+        <button class="lang-toggle">
+          <span class="lang-current">ES</span>
+          <span style="font-size: 0.55rem; opacity: 0.7;">▼</span>
+        </button>
+        <div class="lang-dropdown-menu">
+          <button class="lang-option active" onclick="setLang(event, 'es')">ES</button>
+          <button class="lang-option" onclick="setLang(event, 'pt')">PT</button>
+          <button class="lang-option" onclick="setLang(event, 'en')">EN</button>
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -2372,6 +2451,34 @@ function setExpFilter(btn, type) {
   btn.classList.add('active');
 }
 
+// ─── LANGUAGE SWITCHER ───────────────────────────────────────
+function toggleLangDropdown(event, el) {
+  event.stopPropagation();
+  document.querySelectorAll('.lang-switcher').forEach(switcher => {
+    if (switcher !== el) switcher.classList.remove('open');
+  });
+  el.classList.toggle('open');
+}
+
+document.addEventListener('click', () => {
+  document.querySelectorAll('.lang-switcher').forEach(s => s.classList.remove('open'));
+});
+
+function setLang(event, lang) {
+  event.stopPropagation();
+  const targetText = lang.toUpperCase();
+  document.querySelectorAll('.lang-switcher').forEach(switcher => {
+    switcher.classList.remove('open');
+    switcher.querySelectorAll('.lang-option').forEach(opt => {
+      opt.classList.remove('active');
+      if(opt.textContent.trim() === targetText) opt.classList.add('active');
+    });
+    const currentSpan = switcher.querySelector('.lang-current');
+    if (currentSpan) currentSpan.textContent = targetText;
+  });
+  // Opcional: Implementar lógica real de traducción aquí
+}
+
 // ─── LANDING SWITCHING ───────────────────────────────────────
 function openExplorador() {
   document.getElementById('landing-home').classList.remove('active');
@@ -2533,6 +2640,7 @@ function initMapaReal() {
 
       marker.bindTooltip(`<strong>${muni.name}</strong>`, { direction: 'top', offset: [0, -10], className: 'mapa-tooltip-rna' });
       marker.on('click', () => { openMunicipioDetail(muni.name); });
+      muni.markerMisiones = marker;
     });
   }
 }
@@ -2606,6 +2714,22 @@ function searchMunicipios(query) {
   document.querySelectorAll('.exp-municipio-btn').forEach(btn => {
     btn.style.display = btn.textContent.toLowerCase().includes(q) ? '' : 'none';
   });
+  
+  if (typeof MUNICIPIOS !== 'undefined' && mapaMisiones) {
+    MUNICIPIOS.forEach(muni => {
+      if (muni.markerMisiones) {
+        if (muni.name.toLowerCase().includes(q)) {
+          if (!mapaMisiones.hasLayer(muni.markerMisiones)) {
+            muni.markerMisiones.addTo(mapaMisiones);
+          }
+        } else {
+          if (mapaMisiones.hasLayer(muni.markerMisiones)) {
+            muni.markerMisiones.remove();
+          }
+        }
+      }
+    });
+  }
 }
 
 // ─── MODAL ───────────────────────────────────────────────────
