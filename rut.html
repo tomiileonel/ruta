@@ -1743,12 +1743,12 @@ button { cursor: pointer; font-family: var(--font-body); border: none; }
     </div>
     <div class="nav-actions">
       <ul class="nav-links">
-        <li><a href="#credibilidad">Quiénes Somos</a></li>
-        <li><a href="#pilares">Pilares</a></li>
-        <li><a href="#mapa-preview">Municipios</a></li>
-        <li><a href="#crecemos">Participá</a></li>
+        <li><a href="#credibilidad" data-i18n="nav.quienes_somos">Quiénes Somos</a></li>
+        <li><a href="#pilares" data-i18n="nav.pilares">Pilares</a></li>
+        <li><a href="#mapa-preview" data-i18n="nav.municipios">Municipios</a></li>
+        <li><a href="#crecemos" data-i18n="nav.participa">Participá</a></li>
         <li><a href="https://prismadigital.com.ar" target="_blank" rel="noopener">Prisma Digital ↗</a></li>
-        <li><a href="#" class="nav-cta" onclick="openExplorador(); return false;">Explorar Mapa →</a></li>
+        <li><a href="#" class="nav-cta" onclick="openExplorador(); return false;" data-i18n="nav.explorar">Explorar Mapa →</a></li>
       </ul>
       <div class="lang-switcher" onclick="toggleLangDropdown(event, this)">
         <button class="lang-toggle">
@@ -1776,21 +1776,21 @@ button { cursor: pointer; font-family: var(--font-body); border: none; }
     <div class="hero-content">
       <div class="hero-badge">
         <span class="hero-badge-dot"></span>
-        Declarada de Interés Provincial · Cámara de Representantes de Misiones
+        <span data-i18n="hero.badge">Declarada de Interés Provincial · Cámara de Representantes de Misiones</span>
       </div>
       <h1 class="hero-title">
-        La Ruta de la Niñez
-        <strong>y la Adolescencia</strong>
+        <span data-i18n="hero.title_1">La Ruta de la Niñez</span>
+        <strong data-i18n="hero.title_2">y la Adolescencia</strong>
       </h1>
-      <p class="hero-subtitle">
+      <p class="hero-subtitle" data-i18n="hero.subtitle">
         De Misiones al Mundo — La guía turística integral que conecta familias, comunidades y emprendimientos locales en los 79 municipios de la provincia.
       </p>
       <div class="hero-ctas">
         <a href="#" class="btn-primary" onclick="openExplorador(); return false;">
-          🗺️ Explorar el Mapa Interactivo <span class="btn-arrow">→</span>
+          <span data-i18n="hero.btn_primary">🗺️ Explorar el Mapa Interactivo</span> <span class="btn-arrow">→</span>
         </a>
         <a href="#crecemos" class="btn-secondary">
-          Ser Parte de la Ruta <span class="btn-arrow">→</span>
+          <span data-i18n="hero.btn_secondary">Ser Parte de la Ruta</span> <span class="btn-arrow">→</span>
         </a>
       </div>
     </div>
@@ -1798,15 +1798,15 @@ button { cursor: pointer; font-family: var(--font-body); border: none; }
     <div class="hero-stats">
       <div class="hero-stat">
         <div class="hero-stat-num" data-count="79">79</div>
-        <div class="hero-stat-label">Municipios</div>
+        <div class="hero-stat-label" data-i18n="stats.municipios">Municipios</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-num" data-count="340">340+</div>
-        <div class="hero-stat-label">Emprendimientos</div>
+        <div class="hero-stat-label" data-i18n="stats.emprendimientos">Emprendimientos</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-num" data-count="12">12</div>
-        <div class="hero-stat-label">Meses activos</div>
+        <div class="hero-stat-label" data-i18n="stats.meses">Meses activos</div>
       </div>
     </div>
 
@@ -2180,7 +2180,7 @@ button { cursor: pointer; font-family: var(--font-body); border: none; }
 <div id="landing-explorador" class="landing">
 
   <nav class="explorador-nav">
-    <button class="exp-back-btn" onclick="closeExplorador()">
+    <button class="exp-back-btn" onclick="closeExplorador()" data-i18n="nav.volver">
       ← Volver al Inicio
     </button>
     <div class="exp-title">Explorador de Municipios · Misiones</div>
@@ -2375,6 +2375,79 @@ button { cursor: pointer; font-family: var(--font-body); border: none; }
      JAVASCRIPT
      ============================================================ -->
 <script>
+// ─── DICCIONARIO DE IDIOMAS ──────────────────────────────────
+const traducciones = {
+  es: {
+    nav: {
+      quienes_somos: "Quiénes Somos",
+      pilares: "Pilares",
+      municipios: "Municipios",
+      participa: "Participá",
+      explorar: "Explorar Mapa →",
+      volver: "← Volver al Inicio"
+    },
+    hero: {
+      badge: "Declarada de Interés Provincial · Cámara de Representantes de Misiones",
+      title_1: "La Ruta de la Niñez",
+      title_2: "y la Adolescencia",
+      subtitle: "De Misiones al Mundo — La guía turística integral que conecta familias, comunidades y emprendimientos locales en los 79 municipios de la provincia.",
+      btn_primary: "🗺️ Explorar el Mapa Interactivo",
+      btn_secondary: "Ser Parte de la Ruta"
+    },
+    stats: {
+      municipios: "Municipios",
+      emprendimientos: "Emprendimientos",
+      meses: "Meses activos"
+    }
+  },
+  pt: {
+    nav: {
+      quienes_somos: "Quem Somos",
+      pilares: "Pilares",
+      municipios: "Municípios",
+      participa: "Participe",
+      explorar: "Explorar Mapa →",
+      volver: "← Voltar ao Início"
+    },
+    hero: {
+      badge: "Declarada de Interesse Provincial · Câmara de Representantes de Misiones",
+      title_1: "A Rota da Infância",
+      title_2: "e da Adolescência",
+      subtitle: "De Misiones para o Mundo — O guia turístico completo que conecta famílias, comunidades e negócios locais nos 79 municípios da província.",
+      btn_primary: "🗺️ Explorar o Mapa Interativo",
+      btn_secondary: "Fazer Parte da Rota"
+    },
+    stats: {
+      municipios: "Municípios",
+      emprendimientos: "Empreendimentos",
+      meses: "Meses ativos"
+    }
+  },
+  en: {
+    nav: {
+      quienes_somos: "About Us",
+      pilares: "Pillars",
+      municipios: "Municipalities",
+      participa: "Join Us",
+      explorar: "Explore Map →",
+      volver: "← Back to Home"
+    },
+    hero: {
+      badge: "Declared of Provincial Interest · House of Representatives of Misiones",
+      title_1: "The Childhood",
+      title_2: "and Adolescence Route",
+      subtitle: "From Misiones to the World — The comprehensive tourist guide connecting families, communities, and local businesses across the 79 municipalities of the province.",
+      btn_primary: "🗺️ Explore the Interactive Map",
+      btn_secondary: "Be Part of the Route"
+    },
+    stats: {
+      municipios: "Municipalities",
+      emprendimientos: "Local Businesses",
+      meses: "Active months"
+    }
+  }
+};
+
 // ─── NAV SCROLL ──────────────────────────────────────────────
 const nav = document.getElementById('main-nav');
 window.addEventListener('scroll', () => {
@@ -2465,8 +2538,10 @@ document.addEventListener('click', () => {
 });
 
 function setLang(event, lang) {
-  event.stopPropagation();
+  if (event) event.stopPropagation();
   const targetText = lang.toUpperCase();
+  
+  // 1. Actualizar el estado visual del dropdown en todos los selectores
   document.querySelectorAll('.lang-switcher').forEach(switcher => {
     switcher.classList.remove('open');
     switcher.querySelectorAll('.lang-option').forEach(opt => {
@@ -2476,8 +2551,39 @@ function setLang(event, lang) {
     const currentSpan = switcher.querySelector('.lang-current');
     if (currentSpan) currentSpan.textContent = targetText;
   });
-  // Opcional: Implementar lógica real de traducción aquí
+
+  // 2. Aplicar las traducciones al DOM
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const keys = el.getAttribute('data-i18n').split('.');
+    let translation = traducciones[lang];
+    
+    // Navegar por el objeto JSON
+    keys.forEach(k => {
+      if (translation) translation = translation[k];
+    });
+
+    if (translation) {
+      // Si el elemento es un input/textarea, traducimos el placeholder
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = translation;
+      } else {
+        // Para evitar borrar iconos u otros HTML internos, usamos innerHTML
+        el.innerHTML = translation;
+      }
+    }
+  });
+
+  // 3. Guardar preferencia y actualizar meta de la página (SEO/Accesibilidad)
+  localStorage.setItem('rna_idioma', lang);
+  document.documentElement.lang = lang;
 }
+
+// 4. Inicializar el idioma al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+  // Busca si el usuario ya tenía un idioma guardado, sino usa español
+  const savedLang = localStorage.getItem('rna_idioma') || 'es';
+  setLang(null, savedLang);
+});
 
 // ─── LANDING SWITCHING ───────────────────────────────────────
 function openExplorador() {
@@ -2511,13 +2617,13 @@ const MUNICIPIOS_COORDS = [
   { name: "Azara", lat: -28.0667, lng: -55.6833 },
   { name: "Bernardo de Irigoyen", lat: -26.2500, lng: -53.6500 },
   { name: "Bonpland", lat: -27.4833, lng: -55.4667 },
-  { name: "Caá Yarí", lat: -27.4833, lng: -55.3167 },
   { name: "Campo Grande", lat: -27.2075, lng: -54.9800 },
   { name: "Campo Ramón", lat: -27.4559, lng: -55.0221 },
   { name: "Campo Viera", lat: -27.3310, lng: -55.0543 },
   { name: "Candelaria", lat: -27.4594, lng: -55.7453 },
   { name: "Capioví", lat: -26.9333, lng: -55.0667 },
   { name: "Caraguatay", lat: -26.6167, lng: -54.7667 },
+  { name: "Caá Yarí", lat: -27.4833, lng: -55.3167 },
   { name: "Cerro Azul", lat: -27.6333, lng: -55.4833 },
   { name: "Cerro Corá", lat: -27.5167, lng: -55.6000 },
   { name: "Colonia Alberdi", lat: -27.3500, lng: -55.5667 },
@@ -2551,9 +2657,9 @@ const MUNICIPIOS_COORDS = [
   { name: "Leandro N. Alem", lat: -27.6000, lng: -55.3167 },
   { name: "Loreto", lat: -27.3000, lng: -55.5167 },
   { name: "Los Helechos", lat: -27.0500, lng: -55.0333 },
-  { name: "Mártires", lat: -27.5167, lng: -55.3667 },
   { name: "Mojón Grande", lat: -27.7167, lng: -55.0667 },
   { name: "Montecarlo", lat: -26.5653, lng: -54.7578 },
+  { name: "Mártires", lat: -27.5167, lng: -55.3667 },
   { name: "Nueve de Julio", lat: -26.9333, lng: -54.6000 },
   { name: "Oberá", lat: -27.4814, lng: -55.1233 },
   { name: "Olegario Víctor Andrade", lat: -27.2167, lng: -55.2500 },
