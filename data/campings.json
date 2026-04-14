@@ -1,0 +1,14 @@
+[
+  { "name": "Camping Municipal Saltos del Tabay", "municipio": "Jardín América", "lat": -27.0480, "lng": -55.2190, "desc": "Camping junto a los famosos Saltos del Tabay con servicios completos, parrillas y sanitarios." },
+  { "name": "Camping Salto Encantado", "municipio": "Aristóbulo del Valle", "lat": -27.0550, "lng": -54.8350, "desc": "Camping en el Parque Provincial Salto Encantado, inmerso en selva misionera." },
+  { "name": "Camping Municipal Salto Berrondo", "municipio": "Oberá", "lat": -27.4900, "lng": -55.1300, "desc": "Camping municipal con pileta natural, servicios completos y acceso al salto." },
+  { "name": "Camping Gruta India", "municipio": "Garuhapé", "lat": -26.8150, "lng": -55.0250, "desc": "Sitio con valor arqueológico, camping agreste con servicios básicos y senderos." },
+  { "name": "Camping Salto Capioví", "municipio": "Capioví", "lat": -26.9380, "lng": -55.0600, "desc": "Camping municipal junto al Salto Capioví con área de parrillas y baños." },
+  { "name": "Camping Salto Bella Vista", "municipio": "San Vicente", "lat": -26.9880, "lng": -54.4950, "desc": "Camping con vista al salto, servicios básicos y entorno natural privilegiado." },
+  { "name": "Camping Americano", "municipio": "Puerto Iguazú", "lat": -25.5950, "lng": -54.5650, "desc": "Camping completo cerca de las Cataratas del Iguazú con proveeduría y pileta." },
+  { "name": "Camping Parque Nacional Iguazú", "municipio": "Puerto Iguazú", "lat": -25.6800, "lng": -54.4500, "desc": "Camping agreste dentro del Parque Nacional Iguazú, experiencia en selva." },
+  { "name": "Complejo Costa Sur", "municipio": "Posadas", "lat": -27.3950, "lng": -55.8750, "desc": "Complejo recreativo sobre el río Paraná con áreas de camping y balneario." },
+  { "name": "Camping Municipal El Puma", "municipio": "Montecarlo", "lat": -26.5700, "lng": -54.7580, "desc": "Camping municipal con servicios completos, ideal para familias." },
+  { "name": "Camping Municipal San Ignacio", "municipio": "San Ignacio", "lat": -27.2600, "lng": -55.5300, "desc": "Camping cercano a las Ruinas Jesuíticas, con parrillas y sanitarios." },
+  { "name": "Camping Salto Küppers", "municipio": "Eldorado", "lat": -26.4130, "lng": -54.6230, "desc": "Camping junto al Salto Küppers con cascada natural y senderos." }
+]

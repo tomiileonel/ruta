@@ -1,0 +1,83 @@
+{
+  "es": {
+    "nav": {
+      "quienes_somos": "Quiénes Somos",
+      "pilares": "Pilares",
+      "municipios": "Municipios",
+      "participa": "Participá",
+      "explorar": "Explorar Mapa →",
+      "volver": "← Volver al Inicio"
+    },
+    "hero": {
+      "badge": "Declarada de Interés Provincial · Cámara de Representantes de Misiones",
+      "title_1": "La Ruta de la Niñez",
+      "title_2": "y la Adolescencia",
+      "subtitle": "De Misiones al Mundo — La guía turística integral que conecta familias, comunidades y emprendimientos locales en los 79 municipios de la provincia.",
+      "btn_primary": "🗺️ Explorar el Mapa Interactivo",
+      "btn_secondary": "Ser Parte de la Ruta"
+    },
+    "stats": {
+      "municipios": "Municipios",
+      "emprendimientos": "Emprendimientos",
+      "meses": "Meses activos"
+    },
+    "meta": {
+      "title": "La Ruta de la Niñez y la Adolescencia | Misiones",
+      "description": "La Ruta de la Niñez y la Adolescencia de Misiones — Guía turística integral declarada de Interés Provincial. Conectamos familias, emprendimientos y cultura en los 79 municipios de Misiones."
+    }
+  },
+  "pt": {
+    "nav": {
+      "quienes_somos": "Quem Somos",
+      "pilares": "Pilares",
+      "municipios": "Municípios",
+      "participa": "Participe",
+      "explorar": "Explorar Mapa →",
+      "volver": "← Voltar ao Início"
+    },
+    "hero": {
+      "badge": "Declarada de Interesse Provincial · Câmara de Representantes de Misiones",
+      "title_1": "A Rota da Infância",
+      "title_2": "e da Adolescência",
+      "subtitle": "De Misiones para o Mundo — O guia turístico completo que conecta famílias, comunidades e negócios locais nos 79 municípios da província.",
+      "btn_primary": "🗺️ Explorar o Mapa Interativo",
+      "btn_secondary": "Fazer Parte da Rota"
+    },
+    "stats": {
+      "municipios": "Municípios",
+      "emprendimientos": "Empreendimentos",
+      "meses": "Meses ativos"
+    },
+    "meta": {
+      "title": "A Rota da Infância e da Adolescência | Misiones",
+      "description": "A Rota da Infância e da Adolescência de Misiones — Guia turístico integral declarada de Interesse Provincial."
+    }
+  },
+  "en": {
+    "nav": {
+      "quienes_somos": "About Us",
+      "pilares": "Pillars",
+      "municipios": "Municipalities",
+      "participa": "Join Us",
+      "explorar": "Explore Map →",
+      "volver": "← Back to Home"
+    },
+    "hero": {
+      "badge": "Declared of Provincial Interest · House of Representatives of Misiones",
+      "title_1": "The Childhood",
+      "title_2": "and Adolescence Route",
+      "subtitle": "From Misiones to the World — The comprehensive tourist guide connecting families, communities, and local businesses across the 79 municipalities of the province.",
+      "btn_primary": "🗺️ Explore the Interactive Map",
+      "btn_secondary": "Be Part of the Route"
+    },
+    "stats": {
+      "municipios": "Municipalities",
+      "emprendimientos": "Local Businesses",
+      "meses": "Active months"
+    },
+    "meta": {
+      "title": "The Childhood and Adolescence Route | Misiones",
+      "description": "The Childhood and Adolescence Route of Misiones — Comprehensive tourist guide declared of Provincial Interest."
+    }
+  }
+}
