@@ -9,6 +9,7 @@ let traducciones = {};
 let MUNICIPIOS_COORDS = [];
 let CAMPINGS_DATA = [];
 let LUGARES_EMBLEMATICOS = [];
+let SERVICIOS_NNYA = {};
 let MUNICIPIOS = [];
 let ALL_MUNICIPIOS_NAMES = [];
 let mapaMisiones = null;
@@ -23,17 +24,19 @@ let searchDebounceTimer = null;
 // ─── DATA LOADING ────────────────────────────────────────────
 async function loadAppData() {
   try {
-    const [municipiosData, campingsData, lugaresData, traduccionesData] = await Promise.all([
+    const [municipiosData, campingsData, lugaresData, traduccionesData, serviciosNnyaData] = await Promise.all([
       fetch('data/municipios.json').then(r => { if (!r.ok) throw new Error('municipios.json'); return r.json(); }),
       fetch('data/campings.json').then(r => { if (!r.ok) throw new Error('campings.json'); return r.json(); }),
       fetch('data/lugares-emblematicos.json').then(r => { if (!r.ok) throw new Error('lugares-emblematicos.json'); return r.json(); }),
-      fetch('data/traducciones.json').then(r => { if (!r.ok) throw new Error('traducciones.json'); return r.json(); })
+      fetch('data/traducciones.json').then(r => { if (!r.ok) throw new Error('traducciones.json'); return r.json(); }),
+      fetch('data/servicios-nnya.json').then(r => { if (!r.ok) throw new Error('servicios-nnya.json'); return r.json(); })
     ]);
 
     MUNICIPIOS_COORDS = municipiosData;
     CAMPINGS_DATA = campingsData;
     LUGARES_EMBLEMATICOS = lugaresData;
     traducciones = traduccionesData;
+    SERVICIOS_NNYA = serviciosNnyaData;
     ALL_MUNICIPIOS_NAMES = MUNICIPIOS_COORDS.map(m => m.name);
 
     MUNICIPIOS = MUNICIPIOS_COORDS.map(coord => ({
@@ -50,7 +53,8 @@ async function loadAppData() {
       municipios: MUNICIPIOS.length,
       campings: CAMPINGS_DATA.length,
       lugares: LUGARES_EMBLEMATICOS.length,
-      idiomas: Object.keys(traducciones).length
+      idiomas: Object.keys(traducciones).length,
+      serviciosNNyA: Object.keys(SERVICIOS_NNYA).length + ' categorías'
     });
 
     return true;
@@ -80,6 +84,9 @@ async function initApp() {
 
   // Render emblematic cards
   renderEmblCards();
+
+  // Render Servicios NNyA section
+  renderServiciosNnya();
 
   // Setup scroll reveal
   setupScrollReveal();
@@ -414,6 +421,24 @@ function initMapaPreview() {
     else m.addTo(mapaPreview);
   });
 
+  // Servicios NNyA markers on preview map
+  const svcColors = { deportes: '#E07A3A', recreacion: '#9B59B6', salud: '#E74C3C', educacion: '#3498DB', cultura: '#F39C12' };
+  if (SERVICIOS_NNYA) {
+    Object.keys(SERVICIOS_NNYA).forEach(cat => {
+      const data = SERVICIOS_NNYA[cat];
+      if (data.lugares) {
+        data.lugares.forEach(l => {
+          const sm = L.circleMarker([l.lat, l.lng], {
+            color: '#555', weight: 1, fillColor: svcColors[cat], fillOpacity: 0.75, radius: 3
+          });
+          sm.bindTooltip(`${l.icon} <strong>${l.name}</strong>`, { direction: 'top', offset: [0, -6], className: 'mapa-tooltip-rna' });
+          if (clusterGroupPreview) clusterGroupPreview.addLayer(sm);
+          else sm.addTo(mapaPreview);
+        });
+      }
+    });
+  }
+
   if (clusterGroupPreview) mapaPreview.addLayer(clusterGroupPreview);
 }
 
@@ -488,6 +513,25 @@ function initMapaExplorer() {
     if (clusterGroupExplorer) clusterGroupExplorer.addLayer(eMarker);
     else eMarker.addTo(mapaMisiones);
   });
+
+  // Servicios NNyA markers on explorer map
+  const svcColors = { deportes: '#E07A3A', recreacion: '#9B59B6', salud: '#E74C3C', educacion: '#3498DB', cultura: '#F39C12' };
+  if (SERVICIOS_NNYA) {
+    Object.keys(SERVICIOS_NNYA).forEach(cat => {
+      const data = SERVICIOS_NNYA[cat];
+      if (data.lugares) {
+        data.lugares.forEach(l => {
+          const sMarker = L.circleMarker([l.lat, l.lng], {
+            color: '#444', weight: 1, fillColor: svcColors[cat], fillOpacity: 0.8, radius: 5
+          });
+          sMarker.bindTooltip(`${l.icon} <strong>${l.name}</strong><br><span style="font-size:0.75rem;opacity:0.7">${l.municipio}</span>`, { direction: 'top', offset: [0, -8], className: 'mapa-tooltip-rna' });
+          sMarker.on('click', () => { openMunicipioDetail(l.municipio); });
+          if (clusterGroupExplorer) clusterGroupExplorer.addLayer(sMarker);
+          else sMarker.addTo(mapaMisiones);
+        });
+      }
+    });
+  }
 
   if (clusterGroupExplorer) mapaMisiones.addLayer(clusterGroupExplorer);
 }
@@ -733,15 +777,25 @@ function animateCounter(el, target, suffix = '') {
 
 // ─── EMBLEMATIC PLACES ───────────────────────────────────────
 function renderEmblCards() {
-  const cats = ['entretenimiento', 'campings', 'estudiantil', 'museos'];
-  const catLabels = { entretenimiento: 'Entretenimiento', campings: 'Camping Agroecológico', estudiantil: 'Turismo Estudiantil', museos: 'Museo' };
+  const cats = ['entretenimiento', 'campings', 'estudiantil', 'museos', 'parques', 'peloteros'];
+  const catLabels = {
+    entretenimiento:  'Entretenimiento',
+    campings:         'Camping Agroecológico',
+    estudiantil:      'Turismo Estudiantil',
+    museos:           'Museo',
+    parques:          'Parque Provincial',
+    peloteros:        'Pelotero · Salón Infantil'
+  };
   cats.forEach(cat => {
     const grid = document.getElementById('grid-' + cat);
     if (!grid) return;
     const items = LUGARES_EMBLEMATICOS.filter(l => l.cat === cat);
     grid.innerHTML = items.map(l => `
-      <div class="embl-card" data-cat="${l.cat}" onclick="openMunicipioFromMap('${l.municipio.replace(/'/g, "\\'")}')"
-           role="article" tabindex="0" aria-label="${l.name} en ${l.municipio}">
+      <div class="embl-card" data-cat="${l.cat}"
+           onclick="openMunicipioFromMap('${l.municipio.replace(/'/g, "\\'")}')"
+           role="article" tabindex="0"
+           aria-label="${l.name} en ${l.municipio}"
+           onkeydown="if(event.key==='Enter')openMunicipioFromMap('${l.municipio.replace(/'/g, "\\'")}')" >
         <div class="embl-card-img"><span aria-hidden="true">${l.icon}</span></div>
         <div class="embl-card-body">
           <div class="embl-card-cat">${catLabels[l.cat]}</div>
@@ -771,6 +825,122 @@ function switchEmblTab(btn, cat) {
     panel.classList.add('active');
     panel.setAttribute('aria-hidden', 'false');
   }
+}
+
+// ─── SERVICIOS NNyA ──────────────────────────────────────────
+let activeServiciosCat = 'deportes';
+let activeServiciosSubTab = 'lugares';
+
+const SERVICIOS_CAT_LABELS = {
+  deportes: { label: 'Deportes', icon: '🏟️', color: '#E07A3A' },
+  recreacion: { label: 'Recreación', icon: '🎡', color: '#9B59B6' },
+  salud: { label: 'Salud', icon: '🏥', color: '#E74C3C' },
+  educacion: { label: 'Educación', icon: '🎓', color: '#3498DB' },
+  cultura: { label: 'Cultura', icon: '🎭', color: '#F39C12' }
+};
+
+const SERVICIOS_TIPO_LABELS = {
+  // Deportes
+  club: 'Club Deportivo', padel: 'Cancha de Pádel', futbol: 'Fútbol', basquet: 'Básquet', natacion: 'Natatorio',
+  // Recreación
+  parque_acuatico: 'Parque Acuático', parque_diversiones: 'Parque de Diversiones',
+  centro_recreativo: 'Centro Recreativo', primera_infancia: 'Primera Infancia', guarderia: 'Guardería',
+  // Salud
+  hospital: 'Hospital', sanatorio: 'Sanatorio Privado', policonsultorio: 'Policonsultorio',
+  caps: 'CAPS', cic: 'CIC', sala_auxilios: 'Primeros Auxilios', cruz_roja: 'Cruz Roja',
+  // Educación
+  publica_urbana: 'Pública Urbana', publica_rural: 'Pública Rural',
+  privada_urbana: 'Privada Urbana', privada_rural: 'Privada Rural',
+  // Cultura
+  centro_cultural: 'Centro Cultural', teatro: 'Teatro', anfiteatro: 'Anfiteatro'
+};
+
+function renderServiciosNnya() {
+  if (!SERVICIOS_NNYA || !Object.keys(SERVICIOS_NNYA).length) return;
+  const cat = activeServiciosCat;
+  const subTab = activeServiciosSubTab;
+  const data = SERVICIOS_NNYA[cat];
+  if (!data) return;
+
+  const grid = document.getElementById('servicios-nnya-grid');
+  if (!grid) return;
+
+  const countEl = document.getElementById('servicios-nnya-count');
+
+  if (subTab === 'lugares') {
+    const items = data.lugares || [];
+    if (countEl) countEl.textContent = items.length + ' lugares';
+    grid.innerHTML = items.map(l => `
+      <div class="svc-card" style="--svc-accent: ${SERVICIOS_CAT_LABELS[cat].color}">
+        <div class="svc-card-header">
+          <span class="svc-card-icon" aria-hidden="true">${l.icon}</span>
+          <span class="svc-card-tipo">${SERVICIOS_TIPO_LABELS[l.tipo] || l.tipo}</span>
+        </div>
+        <div class="svc-card-name">${l.name}</div>
+        <div class="svc-card-location"><span aria-hidden="true">📍</span> ${l.municipio}, Misiones</div>
+        <div class="svc-card-desc">${l.desc}</div>
+      </div>
+    `).join('');
+  } else {
+    const items = data.eventos || [];
+    if (countEl) countEl.textContent = items.length + ' eventos';
+    grid.innerHTML = items.map(e => `
+      <div class="svc-card svc-card-evento" style="--svc-accent: ${SERVICIOS_CAT_LABELS[cat].color}">
+        <div class="svc-card-header">
+          <span class="svc-card-icon" aria-hidden="true">${e.icon}</span>
+          <span class="svc-card-fecha">${e.fecha}</span>
+          ${e.alcance ? `<span class="svc-card-alcance svc-alcance-${e.alcance}">${e.alcance === 'nacional' ? '🇦🇷 Nacional' : e.alcance === 'provincial' ? '🏛️ Provincial' : '📍 Municipal'}</span>` : ''}
+        </div>
+        <div class="svc-card-name">${e.name}</div>
+        <div class="svc-card-location"><span aria-hidden="true">📍</span> ${e.municipio}</div>
+        <div class="svc-card-desc">${e.desc}</div>
+      </div>
+    `).join('');
+  }
+
+  // Update stats bar
+  updateServiciosStats();
+}
+
+function switchServiciosTab(btn, cat) {
+  document.querySelectorAll('.svc-tab').forEach(t => {
+    t.classList.remove('active');
+    t.setAttribute('aria-selected', 'false');
+  });
+  btn.classList.add('active');
+  btn.setAttribute('aria-selected', 'true');
+  activeServiciosCat = cat;
+  renderServiciosNnya();
+}
+
+function switchServiciosSubTab(btn, tipo) {
+  document.querySelectorAll('.svc-subtab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  activeServiciosSubTab = tipo;
+  renderServiciosNnya();
+}
+
+function updateServiciosStats() {
+  if (!SERVICIOS_NNYA) return;
+  let totalLugares = 0, totalEventos = 0, totalMunicipios = new Set();
+  Object.keys(SERVICIOS_NNYA).forEach(cat => {
+    const d = SERVICIOS_NNYA[cat];
+    if (d.lugares) {
+      totalLugares += d.lugares.length;
+      d.lugares.forEach(l => totalMunicipios.add(l.municipio));
+    }
+    if (d.eventos) {
+      totalEventos += d.eventos.length;
+    }
+  });
+  const s1 = document.getElementById('svc-stat-lugares');
+  const s2 = document.getElementById('svc-stat-eventos');
+  const s3 = document.getElementById('svc-stat-categorias');
+  const s4 = document.getElementById('svc-stat-municipios');
+  if (s1) s1.textContent = totalLugares + '+';
+  if (s2) s2.textContent = totalEventos + '+';
+  if (s3) s3.textContent = Object.keys(SERVICIOS_NNYA).length;
+  if (s4) s4.textContent = totalMunicipios.size + '+';
 }
 
 // ─── INIT ON DOM READY ───────────────────────────────────────

@@ -1,0 +1,53 @@
+/* ============================================================
+   PATCH styles.css — Categorías nuevas: parques + peloteros
+   Agregar al final del archivo styles.css
+   ============================================================ */
+
+/* ── TAB ACTIVO: Parques Provinciales ─────────────────────── */
+.embl-tab[data-cat="parques"].active {
+  background: linear-gradient(135deg, #1A6B35, #3D8B5C);
+}
+
+/* ── TAB ACTIVO: Peloteros & Salones ──────────────────────── */
+.embl-tab[data-cat="peloteros"].active {
+  background: linear-gradient(135deg, #E23D82, #F06BA0);
+}
+
+/* ── CARD IMAGE: Parques ──────────────────────────────────── */
+.embl-card[data-cat="parques"] .embl-card-img {
+  background: linear-gradient(135deg, #0D4A20, #2D8B55);
+}
+
+/* ── CARD IMAGE: Peloteros ────────────────────────────────── */
+.embl-card[data-cat="peloteros"] .embl-card-img {
+  background: linear-gradient(135deg, #9B1B6E, #E23D82);
+}
+
+/* ── CARD CAT BADGE: Parques ──────────────────────────────── */
+.embl-card[data-cat="parques"] .embl-card-cat {
+  color: #1A6B35;
+  background: rgba(26, 107, 53, 0.10);
+}
+
+/* ── CARD CAT BADGE: Peloteros ────────────────────────────── */
+.embl-card[data-cat="peloteros"] .embl-card-cat {
+  color: #C0185F;
+  background: rgba(226, 61, 130, 0.10);
+}
+
+/* ── GRID: 3 cols por defecto para parques (más items) ─────── */
+#grid-parques {
+  grid-template-columns: repeat(3, 1fr);
+}
+#grid-peloteros {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 1024px) {
+  #grid-parques,
+  #grid-peloteros { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  #grid-parques,
+  #grid-peloteros { grid-template-columns: 1fr; }
+}

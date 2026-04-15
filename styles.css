@@ -2383,4 +2383,428 @@ a:focus:not(:focus-visible) {
 }
 @media (max-width: 768px) {
   .instagram-fallback { grid-template-columns: repeat(2, 1fr); }
-}
+}/* ============================================================
+   PATCH styles.css — Categorías nuevas: parques + peloteros
+   Agregar al final del archivo styles.css
+   ============================================================ */
+
+/* ── TAB ACTIVO: Parques Provinciales ─────────────────────── */
+.embl-tab[data-cat="parques"].active {
+  background: linear-gradient(135deg, #1A6B35, #3D8B5C);
+}
+
+/* ── TAB ACTIVO: Peloteros & Salones ──────────────────────── */
+.embl-tab[data-cat="peloteros"].active {
+  background: linear-gradient(135deg, #E23D82, #F06BA0);
+}
+
+/* ── CARD IMAGE: Parques ──────────────────────────────────── */
+.embl-card[data-cat="parques"] .embl-card-img {
+  background: linear-gradient(135deg, #0D4A20, #2D8B55);
+}
+
+/* ── CARD IMAGE: Peloteros ────────────────────────────────── */
+.embl-card[data-cat="peloteros"] .embl-card-img {
+  background: linear-gradient(135deg, #9B1B6E, #E23D82);
+}
+
+/* ── CARD CAT BADGE: Parques ──────────────────────────────── */
+.embl-card[data-cat="parques"] .embl-card-cat {
+  color: #1A6B35;
+  background: rgba(26, 107, 53, 0.10);
+}
+
+/* ── CARD CAT BADGE: Peloteros ────────────────────────────── */
+.embl-card[data-cat="peloteros"] .embl-card-cat {
+  color: #C0185F;
+  background: rgba(226, 61, 130, 0.10);
+}
+
+/* ── GRID: 3 cols por defecto para parques (más items) ─────── */
+#grid-parques {
+  grid-template-columns: repeat(3, 1fr);
+}
+#grid-peloteros {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 1024px) {
+  #grid-parques,
+  #grid-peloteros { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  #grid-parques,
+  #grid-peloteros { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   SERVICIOS PARA NNyA
+   ============================================================ */
+.servicios-nnya {
+  padding: 100px 8vw;
+  background: linear-gradient(180deg, var(--verde-profundo) 0%, #0D1B2A 100%);
+  position: relative;
+  overflow: hidden;
+}
+.servicios-nnya::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 80%, rgba(224,122,58,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 80% 20%, rgba(155,89,182,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 60% 60%, rgba(52,152,219,0.05) 0%, transparent 50%);
+}
+.servicios-nnya-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.servicios-nnya-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.servicios-nnya-header .section-label {
+  color: var(--tierra-calida);
+  justify-content: center;
+}
+.servicios-nnya-header .section-title {
+  color: var(--blanco);
+  margin-bottom: 16px;
+}
+.servicios-nnya-header .section-title em {
+  color: var(--tierra-calida);
+}
+.servicios-nnya-header p {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.95rem;
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+/* ── CATEGORY TABS ─────────────────────────────────────────── */
+.svc-tabs {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.svc-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: var(--r-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.6);
+  border: 1.5px solid rgba(255,255,255,0.08);
+  transition: all var(--trans-base);
+  cursor: pointer;
+}
+.svc-tab:hover {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.85);
+  border-color: rgba(255,255,255,0.15);
+  transform: translateY(-2px);
+}
+.svc-tab.active {
+  background: var(--tab-color, var(--verde-medio));
+  color: var(--blanco);
+  border-color: var(--tab-color, var(--verde-medio));
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3), 0 0 30px color-mix(in srgb, var(--tab-color, var(--verde-medio)) 25%, transparent);
+  transform: translateY(-1px);
+}
+.svc-tab-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* ── SUB-TABS ──────────────────────────────────────────────── */
+.svc-subtabs {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+.svc-subtab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: var(--r-sm);
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all var(--trans-base);
+  cursor: pointer;
+  letter-spacing: 0.04em;
+}
+.svc-subtab:hover {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.8);
+}
+.svc-subtab.active {
+  background: rgba(255,255,255,0.12);
+  color: var(--blanco);
+  border-color: rgba(255,255,255,0.2);
+}
+.svc-subtab-count {
+  background: rgba(255,255,255,0.15);
+  padding: 2px 10px;
+  border-radius: var(--r-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* ── SERVICE CARDS GRID ────────────────────────────────────── */
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 56px;
+  min-height: 200px;
+}
+
+/* ── SERVICE CARD ──────────────────────────────────────────── */
+.svc-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--r-md);
+  padding: 28px 24px;
+  transition: all var(--trans-base);
+  position: relative;
+  overflow: hidden;
+  animation: svc-card-in 0.4s ease both;
+}
+.svc-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--svc-accent, var(--verde-medio));
+  opacity: 0;
+  transition: opacity var(--trans-base);
+}
+.svc-card:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.16);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+}
+.svc-card:hover::before {
+  opacity: 1;
+}
+
+@keyframes svc-card-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Stagger animation for grid items */
+.svc-card:nth-child(1) { animation-delay: 0.02s; }
+.svc-card:nth-child(2) { animation-delay: 0.06s; }
+.svc-card:nth-child(3) { animation-delay: 0.10s; }
+.svc-card:nth-child(4) { animation-delay: 0.14s; }
+.svc-card:nth-child(5) { animation-delay: 0.18s; }
+.svc-card:nth-child(6) { animation-delay: 0.22s; }
+.svc-card:nth-child(7) { animation-delay: 0.26s; }
+.svc-card:nth-child(8) { animation-delay: 0.30s; }
+.svc-card:nth-child(9) { animation-delay: 0.34s; }
+
+.svc-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.svc-card-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.06);
+  border-radius: var(--r-sm);
+  transition: transform var(--trans-spring), background var(--trans-base);
+}
+.svc-card:hover .svc-card-icon {
+  transform: scale(1.1) rotate(-3deg);
+  background: rgba(255,255,255,0.1);
+}
+.svc-card-tipo {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--svc-accent, var(--verde-medio));
+  background: color-mix(in srgb, var(--svc-accent, var(--verde-medio)) 15%, transparent);
+  padding: 4px 12px;
+  border-radius: var(--r-full);
+}
+.svc-card-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--blanco);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.svc-card-location {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.svc-card-desc {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.65;
+}
+
+/* ── EVENT CARD EXTRAS ─────────────────────────────────────── */
+.svc-card-evento {
+  border-left: 3px solid var(--svc-accent, var(--verde-medio));
+}
+.svc-card-evento::before {
+  display: none;
+}
+.svc-card-fecha {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--blanco);
+  background: var(--svc-accent, var(--verde-medio));
+  padding: 4px 14px;
+  border-radius: var(--r-full);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.svc-card-alcance {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--r-full);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.svc-alcance-nacional {
+  background: rgba(245,196,37,0.2);
+  color: #F5C425;
+  border: 1px solid rgba(245,196,37,0.3);
+}
+.svc-alcance-provincial {
+  background: rgba(45,148,196,0.2);
+  color: #5BC0DE;
+  border: 1px solid rgba(45,148,196,0.3);
+}
+.svc-alcance-municipal {
+  background: rgba(116,198,157,0.2);
+  color: #74C69D;
+  border: 1px solid rgba(116,198,157,0.3);
+}
+
+/* ── STATS BAR ─────────────────────────────────────────────── */
+.svc-stats-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--r-lg);
+  padding: 32px 40px;
+}
+.svc-stat-item {
+  text-align: center;
+  position: relative;
+}
+.svc-stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: rgba(255,255,255,0.08);
+}
+.svc-stat-num {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--tierra-calida);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.svc-stat-label {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.45);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── RESPONSIVE SERVICIOS NNyA ─────────────────────────────── */
+@media (max-width: 1200px) {
+  .svc-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .servicios-nnya {
+    padding: 64px 5vw;
+  }
+  .svc-tabs {
+    gap: 6px;
+  }
+  .svc-tab {
+    padding: 10px 16px;
+    font-size: 0.78rem;
+  }
+  .svc-tab-icon {
+    font-size: 0.95rem;
+  }
+  .svc-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .svc-stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 24px 20px;
+    gap: 20px;
+  }
+  .svc-stat-item:nth-child(2)::after {
+    display: none;
+  }
+  .svc-stat-num {
+    font-size: 1.8rem;
+  }
+  .svc-subtabs {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 480px) {
+  .svc-tab {
+    padding: 8px 12px;
+    font-size: 0.72rem;
+    gap: 4px;
+  }
+  .svc-stats-bar {
+    grid-template-columns: 1fr 1fr;
+  }
+  .svc-card {
+    padding: 20px 18px;
+  }
+}

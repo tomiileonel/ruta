@@ -111,6 +111,7 @@
         <li><a href="#crecemos" data-i18n="nav.participa">Participá</a></li>
         <li><a href="#capacitacion">Capacitación</a></li>
         <li><a href="#emblematicos">Emblemas</a></li>
+        <li><a href="#servicios-nnya">Servicios NNyA</a></li>
         <li><a href="https://prismadigital.com.ar" target="_blank" rel="noopener">Prisma Digital ↗</a></li>
         <li><a href="#" class="nav-cta" onclick="openExplorador(); return false;" data-i18n="nav.explorar">Explorar Mapa →</a></li>
       </ul>
@@ -422,17 +423,29 @@
       </div>
 
       <div class="embl-tabs">
-        <button class="embl-tab active" data-cat="entretenimiento" onclick="switchEmblTab(this, 'entretenimiento')">
+        <button class="embl-tab active" data-cat="entretenimiento" onclick="switchEmblTab(this, 'entretenimiento')"
+                role="tab" aria-selected="true" aria-controls="panel-entretenimiento">
           <span class="embl-tab-icon">🎪</span> Entretenimiento
         </button>
-        <button class="embl-tab" data-cat="campings" onclick="switchEmblTab(this, 'campings')">
+        <button class="embl-tab" data-cat="campings" onclick="switchEmblTab(this, 'campings')"
+                role="tab" aria-selected="false" aria-controls="panel-campings">
           <span class="embl-tab-icon">🌱</span> Campings Agroecológicos
         </button>
-        <button class="embl-tab" data-cat="estudiantil" onclick="switchEmblTab(this, 'estudiantil')">
+        <button class="embl-tab" data-cat="estudiantil" onclick="switchEmblTab(this, 'estudiantil')"
+                role="tab" aria-selected="false" aria-controls="panel-estudiantil">
           <span class="embl-tab-icon">🎓</span> Turismo Estudiantil
         </button>
-        <button class="embl-tab" data-cat="museos" onclick="switchEmblTab(this, 'museos')">
+        <button class="embl-tab" data-cat="museos" onclick="switchEmblTab(this, 'museos')"
+                role="tab" aria-selected="false" aria-controls="panel-museos">
           <span class="embl-tab-icon">🏛️</span> Museos
+        </button>
+        <button class="embl-tab" data-cat="parques" onclick="switchEmblTab(this, 'parques')"
+                role="tab" aria-selected="false" aria-controls="panel-parques">
+          <span class="embl-tab-icon">🌲</span> Parques Provinciales
+        </button>
+        <button class="embl-tab" data-cat="peloteros" onclick="switchEmblTab(this, 'peloteros')"
+                role="tab" aria-selected="false" aria-controls="panel-peloteros">
+          <span class="embl-tab-icon">🎈</span> Peloteros &amp; Salones
         </button>
       </div>
 
@@ -448,23 +461,99 @@
       <div class="embl-panel" id="panel-museos">
         <div class="embl-grid" id="grid-museos"></div>
       </div>
+      <div class="embl-panel" id="panel-parques" role="tabpanel" aria-hidden="true">
+        <div class="embl-grid" id="grid-parques"></div>
+      </div>
+      <div class="embl-panel" id="panel-peloteros" role="tabpanel" aria-hidden="true">
+        <div class="embl-grid" id="grid-peloteros"></div>
+      </div>
 
       <div class="embl-stats-bar reveal">
         <div class="embl-stat-item">
-          <div class="embl-stat-num">24+</div>
+          <div class="embl-stat-num">41+</div>
           <div class="embl-stat-label">Lugares emblemáticos</div>
         </div>
         <div class="embl-stat-item">
-          <div class="embl-stat-num">4</div>
+          <div class="embl-stat-num">6</div>
           <div class="embl-stat-label">Categorías turísticas</div>
         </div>
         <div class="embl-stat-item">
-          <div class="embl-stat-num">15+</div>
+          <div class="embl-stat-num">20+</div>
           <div class="embl-stat-label">Municipios representados</div>
         </div>
         <div class="embl-stat-item">
           <div class="embl-stat-num">∞</div>
           <div class="embl-stat-label">Experiencias por vivir</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS PARA NNyA -->
+  <section class="servicios-nnya" id="servicios-nnya">
+    <div class="servicios-nnya-inner">
+      <div class="servicios-nnya-header reveal">
+        <div class="section-label">Para la Niñez y Adolescencia</div>
+        <h2 class="section-title">Servicios para <em>NNyA</em> en Misiones</h2>
+        <p>Directorio integral de lugares, instituciones y eventos destinados a niñas, niños y adolescentes en toda la provincia. Deportes, recreación, salud, educación y cultura al alcance de las familias misioneras.</p>
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="svc-tabs" role="tablist" aria-label="Categorías de servicios para NNyA">
+        <button class="svc-tab active" data-cat="deportes" onclick="switchServiciosTab(this, 'deportes')"
+                role="tab" aria-selected="true" style="--tab-color: #E07A3A">
+          <span class="svc-tab-icon">🏟️</span> Deportes
+        </button>
+        <button class="svc-tab" data-cat="recreacion" onclick="switchServiciosTab(this, 'recreacion')"
+                role="tab" aria-selected="false" style="--tab-color: #9B59B6">
+          <span class="svc-tab-icon">🎡</span> Recreación
+        </button>
+        <button class="svc-tab" data-cat="salud" onclick="switchServiciosTab(this, 'salud')"
+                role="tab" aria-selected="false" style="--tab-color: #E74C3C">
+          <span class="svc-tab-icon">🏥</span> Salud
+        </button>
+        <button class="svc-tab" data-cat="educacion" onclick="switchServiciosTab(this, 'educacion')"
+                role="tab" aria-selected="false" style="--tab-color: #3498DB">
+          <span class="svc-tab-icon">🎓</span> Educación
+        </button>
+        <button class="svc-tab" data-cat="cultura" onclick="switchServiciosTab(this, 'cultura')"
+                role="tab" aria-selected="false" style="--tab-color: #F39C12">
+          <span class="svc-tab-icon">🎭</span> Cultura
+        </button>
+      </div>
+
+      <!-- Sub-tabs: Lugares / Eventos -->
+      <div class="svc-subtabs">
+        <button class="svc-subtab active" onclick="switchServiciosSubTab(this, 'lugares')">
+          📍 Lugares <span id="servicios-nnya-count" class="svc-subtab-count"></span>
+        </button>
+        <button class="svc-subtab" onclick="switchServiciosSubTab(this, 'eventos')">
+          📅 Eventos
+        </button>
+      </div>
+
+      <!-- Dynamic Grid -->
+      <div class="svc-grid" id="servicios-nnya-grid">
+        <!-- JS rendered -->
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="svc-stats-bar reveal">
+        <div class="svc-stat-item">
+          <div class="svc-stat-num" id="svc-stat-lugares">0</div>
+          <div class="svc-stat-label">Lugares registrados</div>
+        </div>
+        <div class="svc-stat-item">
+          <div class="svc-stat-num" id="svc-stat-eventos">0</div>
+          <div class="svc-stat-label">Eventos anuales</div>
+        </div>
+        <div class="svc-stat-item">
+          <div class="svc-stat-num" id="svc-stat-categorias">5</div>
+          <div class="svc-stat-label">Categorías</div>
+        </div>
+        <div class="svc-stat-item">
+          <div class="svc-stat-num" id="svc-stat-municipios">0</div>
+          <div class="svc-stat-label">Municipios alcanzados</div>
         </div>
       </div>
     </div>
@@ -687,6 +776,7 @@
           <li><a href="#alianzas">Alianzas</a></li>
           <li><a href="#crecemos">Trabajá con Nosotros</a></li>
           <li><a href="#emblematicos">Lugares Emblemáticos</a></li>
+          <li><a href="#servicios-nnya">Servicios NNyA</a></li>
         </ul>
       </div>
       <div>
@@ -812,6 +902,11 @@
           <div class="legend-item"><div class="legend-dot" style="background:#2D6B4A; border: 2px solid #1A3D28"></div> 🌱 Campings Agroecológicos</div>
           <div class="legend-item"><div class="legend-dot" style="background:#2D94C4"></div> 🎓 Turismo Estudiantil</div>
           <div class="legend-item"><div class="legend-dot" style="background:#DAA520"></div> 🏛️ Museos</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#E07A3A"></div> 🏟️ Deportes NNyA</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#9B59B6"></div> 🎡 Recreación NNyA</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#E74C3C"></div> 🏥 Salud NNyA</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#3498DB"></div> 🎓 Educación NNyA</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#F39C12"></div> 🎭 Cultura NNyA</div>
           <div class="legend-item"><div class="legend-dot" style="background:rgba(91,164,194,0.5); border: 1px dashed var(--azul-cielo)"></div> Ríos (Paraná / Uruguay)</div>
         </div>
       </div>
