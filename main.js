@@ -838,7 +838,8 @@ const SERVICIOS_CAT_LABELS = {
   educacion: { label: 'Educación', icon: '🎓', color: '#3498DB' },
   cultura: { label: 'Cultura', icon: '🎭', color: '#F39C12' },
   especialistas: { label: 'Especialistas', icon: '👩‍⚕️', color: '#1ABC9C' },
-  emprendedores: { label: 'Emprendedores', icon: '🎉', color: '#E91E8C' }
+  emprendimientos_locales: { label: 'Emprendimientos', icon: '🌱', color: '#27AE60' },
+  emprendedores: { label: 'Fiestas', icon: '🎉', color: '#E91E8C' }
 };
 
 const SERVICIOS_TIPO_LABELS = {
@@ -858,7 +859,12 @@ const SERVICIOS_TIPO_LABELS = {
   // Especialistas
   psicologo_infantil: 'Psicólogo Infantil', pediatra: 'Pediatra',
   profesor_particular: 'Profesor Particular', psicopedagogo: 'Psicopedagogo',
-  // Emprendedores
+  // Emprendimientos Locales NNyA
+  reciclaje: 'Reciclaje Creativo', telas: 'Telas y Tejidos',
+  ropa_nnya: 'Ropa Infantil', montessori: 'Juegos y Materiales Montessori',
+  artesanias: 'Artesanías para NNyA', comida_saludable: 'Comida Saludable',
+  capacitacion_nutricion: 'Capacitación en Nutrición Infantil',
+  // Emprendedores / Fiestas
   cotillon: 'Cotillón', decorador: 'Decoración de Eventos',
   catering: 'Catering', inflable: 'Alquiler de Inflables'
 };
