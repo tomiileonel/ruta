@@ -45,7 +45,7 @@
   },
   "parentOrganization": {
     "@type": "Organization",
-    "name": "Revista Prisma Digital",
+    "name": "Revista Prisma",
     "url": "https://prismadigital.com.ar"
   },
   "sameAs": [
@@ -97,7 +97,7 @@
   <!-- NAV -->
   <nav class="nav" id="main-nav" role="navigation" aria-label="Navegación principal">
     <div class="nav-logo">
-      <div class="nav-logo-icon" aria-hidden="true">🌿</div>
+      <img src="rna_logo.png" alt="Logo Ruta de la Niñez y la Adolescencia" class="nav-logo-img" aria-label="RNA Misiones">
       <div class="nav-logo-text">
         RNA Misiones
         <div class="nav-logo-sub">Ruta de la Niñez y Adolescencia</div>
@@ -112,7 +112,7 @@
         <li><a href="#capacitacion">Capacitación</a></li>
         <li><a href="#emblematicos">Emblemas</a></li>
         <li><a href="#servicios-nnya">Servicios NNyA</a></li>
-        <li><a href="https://prismadigital.com.ar" target="_blank" rel="noopener">Prisma Digital ↗</a></li>
+        <li><a href="https://prismadigital.com.ar" target="_blank" rel="noopener">Revista Prisma ↗</a></li>
         <li><a href="#" class="nav-cta" onclick="openExplorador(); return false;" data-i18n="nav.explorar">Explorar Mapa →</a></li>
       </ul>
       <div class="lang-switcher" onclick="toggleLangDropdown(event, this)">
@@ -141,7 +141,10 @@
     <div class="hero-content">
       <div class="hero-badge">
         <span class="hero-badge-dot"></span>
-        <span data-i18n="hero.badge">Declarada de Interés Provincial · Cámara de Representantes de Misiones</span>
+        <a href="reconocimiento.png" target="_blank" rel="noopener" class="hero-badge-link" title="Ver resolución — Declarada de Interés Provincial">
+          <span data-i18n="hero.badge">Declarada de Interés Provincial · Cámara de Representantes de Misiones</span>
+          <span class="hero-badge-arrow">↗</span>
+        </a>
       </div>
       <h1 class="hero-title">
         <span data-i18n="hero.title_1">La Ruta de la Niñez</span>
@@ -187,12 +190,12 @@
       <div class="credibilidad-card reveal">
         <div class="director-avatar">LM</div>
         <div class="director-name">Laura Montenegro</div>
-        <div class="director-role">Directora Editorial · Revista Prisma Digital</div>
+        <div class="director-role">Directora Editorial · Revista Prisma</div>
         <p class="director-bio">
           Impulsora y referente institucional de la Ruta de la Niñez y la Adolescencia de Misiones. Con más de una década de trayectoria en comunicación cultural y periodismo de impacto social, Laura lidera esta iniciativa que articula derechos de la infancia, turismo responsable y desarrollo comunitario en toda la provincia.
         </p>
         <a href="https://prismadigital.com.ar" target="_blank" rel="noopener" class="prisma-link">
-          📰 Visitar Revista Prisma Digital →
+          📰 Visitar Revista Prisma →
         </a>
       </div>
 
@@ -307,7 +310,7 @@
       </div>
       <div class="alianzas-grid reveal">
         <div class="alianza-item featured">
-          <span class="alianza-icon">📰</span> Revista Prisma Digital
+          <span class="alianza-icon">📰</span> Revista Prisma
         </div>
         <div class="alianza-item">
           <span class="alianza-icon">🏛️</span> Cámara de Representantes de Misiones
@@ -520,6 +523,14 @@
                 role="tab" aria-selected="false" style="--tab-color: #F39C12">
           <span class="svc-tab-icon">🎭</span> Cultura
         </button>
+        <button class="svc-tab" data-cat="especialistas" onclick="switchServiciosTab(this, 'especialistas')"
+                role="tab" aria-selected="false" style="--tab-color: #1ABC9C">
+          <span class="svc-tab-icon">👩‍⚕️</span> Especialistas
+        </button>
+        <button class="svc-tab" data-cat="emprendedores" onclick="switchServiciosTab(this, 'emprendedores')"
+                role="tab" aria-selected="false" style="--tab-color: #E91E8C">
+          <span class="svc-tab-icon">🎉</span> Emprendedores
+        </button>
       </div>
 
       <!-- Sub-tabs: Lugares / Eventos -->
@@ -576,7 +587,7 @@
           </li>
           <li class="beneficio-item">
             <span class="beneficio-check">✓</span>
-            <span>Difusión en redes sociales de @rnamisiones y Revista Prisma Digital</span>
+            <span>Difusión en redes sociales de @rnamisiones y Revista Prisma</span>
           </li>
           <li class="beneficio-item">
             <span class="beneficio-check">✓</span>
@@ -698,19 +709,84 @@
           📸 @rnamisiones →
         </a>
       </div>
-      <div class="instagram-grid reveal">
-        <div class="insta-post"><div class="insta-post-placeholder" style="background:linear-gradient(135deg,#1A3D28,#2D6B4A)">🌿</div><div class="insta-post-overlay">Ver en Instagram</div></div>
-        <div class="insta-post"><div class="insta-post-placeholder" style="background:linear-gradient(135deg,#E9A84C,#F4803C)">👶</div><div class="insta-post-overlay">Ver en Instagram</div></div>
-        <div class="insta-post"><div class="insta-post-placeholder" style="background:linear-gradient(135deg,#2C6E8A,#1D3557)">🗺️</div><div class="insta-post-overlay">Ver en Instagram</div></div>
-        <div class="insta-post"><div class="insta-post-placeholder" style="background:linear-gradient(135deg,#74C69D,#2D6B4A)">🌺</div><div class="insta-post-overlay">Ver en Instagram</div></div>
-        <div class="insta-post"><div class="insta-post-placeholder" style="background:linear-gradient(135deg,#F5C842,#E9A84C)">🎭</div><div class="insta-post-overlay">Ver en Instagram</div></div>
-        <div class="insta-post"><div class="insta-post-placeholder" style="background:linear-gradient(135deg,#0D2B1A,#1A3D28)">🦋</div><div class="insta-post-overlay">Ver en Instagram</div></div>
+
+      <!-- Highlights del Instagram de @rnamisiones -->
+      <div class="insta-highlights reveal">
+        <a href="https://instagram.com/rnamisiones" target="_blank" rel="noopener" class="insta-highlight-item">
+          <div class="insta-highlight-ring">
+            <div class="insta-highlight-circle" style="background:linear-gradient(135deg,#FF6B35,#F7C59F)">🍕</div>
+          </div>
+          <span>Bares/Restó</span>
+        </a>
+        <a href="https://instagram.com/rnamisiones" target="_blank" rel="noopener" class="insta-highlight-item">
+          <div class="insta-highlight-ring">
+            <div class="insta-highlight-circle" style="background:linear-gradient(135deg,#F9C74F,#90BE6D)">🏆</div>
+          </div>
+          <span>Torneos</span>
+        </a>
+        <a href="https://instagram.com/rnamisiones" target="_blank" rel="noopener" class="insta-highlight-item">
+          <div class="insta-highlight-ring">
+            <div class="insta-highlight-circle" style="background:linear-gradient(135deg,#43AA8B,#277DA1)">🔬</div>
+          </div>
+          <span>Ciencia</span>
+        </a>
+        <a href="https://instagram.com/rnamisiones" target="_blank" rel="noopener" class="insta-highlight-item">
+          <div class="insta-highlight-ring">
+            <div class="insta-highlight-circle" style="background:linear-gradient(135deg,#9B5DE5,#F15BB5)">📅</div>
+          </div>
+          <span>Eventos</span>
+        </a>
+        <a href="https://instagram.com/rnamisiones" target="_blank" rel="noopener" class="insta-highlight-item">
+          <div class="insta-highlight-ring">
+            <div class="insta-highlight-circle" style="background:linear-gradient(135deg,#00BBF9,#00F5D4)">🛒</div>
+          </div>
+          <span>Shopping</span>
+        </a>
+        <a href="https://instagram.com/rnamisiones" target="_blank" rel="noopener" class="insta-highlight-item">
+          <div class="insta-highlight-ring">
+            <div class="insta-highlight-circle" style="background:linear-gradient(135deg,#E07A3A,#F9C74F)">⚽</div>
+          </div>
+          <span>Deportes</span>
+        </a>
+        <a href="https://instagram.com/rnamisiones" target="_blank" rel="noopener" class="insta-highlight-item">
+          <div class="insta-highlight-ring">
+            <div class="insta-highlight-circle" style="background:linear-gradient(135deg,#4CC9F0,#7209B7)">🎮</div>
+          </div>
+          <span>Juegos</span>
+        </a>
       </div>
 
-      <!-- RUBROS DE EJEMPLO -->
+      <div class="instagram-grid reveal">
+        <a href="https://instagram.com/rnamisiones" target="_blank" rel="noopener" class="insta-post">
+          <div class="insta-post-placeholder" style="background:linear-gradient(135deg,#1A3D28,#2D6B4A)">🌿</div>
+          <div class="insta-post-overlay">Ver en Instagram</div>
+        </a>
+        <a href="https://instagram.com/rnamisiones" target="_blank" rel="noopener" class="insta-post">
+          <div class="insta-post-placeholder" style="background:linear-gradient(135deg,#E9A84C,#F4803C)">👶</div>
+          <div class="insta-post-overlay">Ver en Instagram</div>
+        </a>
+        <a href="https://instagram.com/rnamisiones" target="_blank" rel="noopener" class="insta-post">
+          <div class="insta-post-placeholder" style="background:linear-gradient(135deg,#2C6E8A,#1D3557)">🗺️</div>
+          <div class="insta-post-overlay">Ver en Instagram</div>
+        </a>
+        <a href="https://instagram.com/rnamisiones" target="_blank" rel="noopener" class="insta-post">
+          <div class="insta-post-placeholder" style="background:linear-gradient(135deg,#74C69D,#2D6B4A)">🌲</div>
+          <div class="insta-post-overlay">Ver en Instagram</div>
+        </a>
+        <a href="https://instagram.com/rnamisiones" target="_blank" rel="noopener" class="insta-post">
+          <div class="insta-post-placeholder" style="background:linear-gradient(135deg,#F5C842,#E9A84C)">🏆</div>
+          <div class="insta-post-overlay">Ver en Instagram</div>
+        </a>
+        <a href="https://instagram.com/rnamisiones" target="_blank" rel="noopener" class="insta-post">
+          <div class="insta-post-placeholder" style="background:linear-gradient(135deg,#9B5DE5,#F15BB5)">🎉</div>
+          <div class="insta-post-overlay">Ver en Instagram</div>
+        </a>
+      </div>
+
+      <!-- RUBROS ACTUALIZADOS -->
       <div class="rubros-section reveal">
         <h3>¿En qué rubros podés participar?</h3>
-        <p>Estos son algunos ejemplos de comercios y servicios que pueden sumarse a la Ruta y capacitarse en atención al público infantil y juvenil. ¡Seguinos en Instagram para ver cómo lo hacen!</p>
+        <p>Estos son algunos ejemplos de comercios y servicios que pueden sumarse a la Ruta y capacitarse en atención al público infantil y juvenil. ¡Seguinos en <a href="https://instagram.com/rnamisiones" target="_blank" rel="noopener" style="color:var(--naranja);font-weight:600">@rnamisiones</a> para ver cómo lo hacen!</p>
         <div class="rubros-grid">
           <div class="rubro-card">
             <div class="rubro-icon">📚</div>
@@ -728,9 +804,24 @@
             <div class="rubro-example">Salones de juego y diversión</div>
           </div>
           <div class="rubro-card">
-            <div class="rubro-icon">🏫</div>
-            <div class="rubro-name">Escuelas</div>
-            <div class="rubro-example">Instituciones educativas</div>
+            <div class="rubro-icon">🎊</div>
+            <div class="rubro-name">Cotillones</div>
+            <div class="rubro-example">Artículos para fiestas y eventos</div>
+          </div>
+          <div class="rubro-card">
+            <div class="rubro-icon">🎨</div>
+            <div class="rubro-name">Decoradores</div>
+            <div class="rubro-example">Decoración para cumpleaños y fiestas</div>
+          </div>
+          <div class="rubro-card">
+            <div class="rubro-icon">🍽️</div>
+            <div class="rubro-name">Catering</div>
+            <div class="rubro-example">Servicio gastronómico para eventos</div>
+          </div>
+          <div class="rubro-card">
+            <div class="rubro-icon">🏠</div>
+            <div class="rubro-name">Inflables</div>
+            <div class="rubro-example">Alquiler de juegos inflables</div>
           </div>
           <div class="rubro-card">
             <div class="rubro-icon">🏥</div>
@@ -738,9 +829,24 @@
             <div class="rubro-example">Atención pediátrica</div>
           </div>
           <div class="rubro-card">
-            <div class="rubro-icon">🍽️</div>
-            <div class="rubro-name">Restaurantes</div>
-            <div class="rubro-example">Menú infantil y familiar</div>
+            <div class="rubro-icon">🧠</div>
+            <div class="rubro-name">Psicólogos</div>
+            <div class="rubro-example">Psicología infantil y juvenil</div>
+          </div>
+          <div class="rubro-card">
+            <div class="rubro-icon">👨‍⚕️</div>
+            <div class="rubro-name">Pediatras</div>
+            <div class="rubro-example">Atención médica infantil</div>
+          </div>
+          <div class="rubro-card">
+            <div class="rubro-icon">📖</div>
+            <div class="rubro-name">Prof. Particulares</div>
+            <div class="rubro-example">Apoyo escolar y educativo</div>
+          </div>
+          <div class="rubro-card">
+            <div class="rubro-icon">🧩</div>
+            <div class="rubro-name">Psicopedagogos</div>
+            <div class="rubro-example">Acompañamiento en aprendizaje</div>
           </div>
         </div>
       </div>
@@ -792,7 +898,7 @@
       <div>
         <div class="footer-col-title">Institucional</div>
         <ul class="footer-links">
-          <li><a href="https://prismadigital.com.ar" target="_blank" rel="noopener">Revista Prisma Digital</a></li>
+          <li><a href="https://prismadigital.com.ar" target="_blank" rel="noopener">Revista Prisma</a></li>
           <li><a href="#">Declaración de Interés Provincial</a></li>
           <li><a href="https://www.diputadosmisiones.gov.ar" target="_blank" rel="noopener">Ley Juanita — Diputados Misiones</a></li>
           <li><a href="#capacitacion">Capacitación</a></li>
@@ -804,10 +910,12 @@
     </div>
     <div class="footer-bottom">
       <div class="footer-credits">
-        © 2025 La Ruta de la Niñez y la Adolescencia de Misiones · Impulsada por <a href="https://prismadigital.com.ar" target="_blank" rel="noopener">Revista Prisma Digital</a>
+        © 2025 La Ruta de la Niñez y la Adolescencia de Misiones · Impulsada por <a href="https://prismadigital.com.ar" target="_blank" rel="noopener">Revista Prisma</a>
       </div>
       <div class="declaracion-footer">
-        ★ Declarada de Interés Provincial · Cámara de Representantes de Misiones
+        <a href="reconocimiento.png" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;" title="Ver resolución oficial">
+          ★ Declarada de Interés Provincial · Cámara de Representantes de Misiones ↗
+        </a>
       </div>
     </div>
   </footer>

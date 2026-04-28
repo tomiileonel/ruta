@@ -2808,3 +2808,136 @@ a:focus:not(:focus-visible) {
     padding: 20px 18px;
   }
 }
+
+/* ============================================================
+   RNA LOGO IN NAV
+   ============================================================ */
+.nav-logo-img {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #fff;
+  padding: 4px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  transition: transform var(--trans-spring);
+}
+.nav-logo:hover .nav-logo-img { transform: rotate(-4deg) scale(1.08); }
+
+/* ============================================================
+   HERO BADGE LINK (Interés Provincial)
+   ============================================================ */
+.hero-badge-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: inherit;
+  text-decoration: none;
+  transition: opacity var(--trans-base);
+}
+.hero-badge-link:hover { opacity: 0.85; }
+.hero-badge-arrow {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  transition: transform var(--trans-spring);
+}
+.hero-badge-link:hover .hero-badge-arrow { transform: translate(2px, -2px); }
+
+/* ============================================================
+   INSTAGRAM HIGHLIGHTS (Stories)
+   ============================================================ */
+.insta-highlights {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.insta-highlight-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--texto-oscuro);
+  transition: transform var(--trans-spring);
+}
+.insta-highlight-item:hover { transform: translateY(-4px); }
+.insta-highlight-ring {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, #F5C425, #E8832A, #E23D3D, #9B5DE5);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+.insta-highlight-circle {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+}
+.insta-highlight-item span {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--texto-medio);
+  max-width: 72px;
+  text-align: center;
+}
+
+/* ============================================================
+   INSTAGRAM POSTS AS LINKS
+   ============================================================ */
+.instagram-grid a.insta-post {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============================================================
+   SVC CARD — ADDRESS / PHONE / MAP
+   ============================================================ */
+.svc-card-address {
+  font-size: 0.8rem;
+  color: var(--texto-medio);
+  margin-top: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  line-height: 1.4;
+}
+.svc-card-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--verde-medio);
+  text-decoration: none;
+  border: 1px solid var(--verde-medio);
+  padding: 5px 12px;
+  border-radius: var(--r-full);
+  transition: background var(--trans-base), color var(--trans-base);
+  margin-right: 6px;
+}
+.svc-card-phone:hover { background: var(--verde-medio); color: #fff; }
+.svc-card-map {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--naranja);
+  text-decoration: none;
+  border: 1px solid var(--naranja);
+  padding: 5px 12px;
+  border-radius: var(--r-full);
+  transition: background var(--trans-base), color var(--trans-base);
+}
+.svc-card-map:hover { background: var(--naranja); color: #fff; }

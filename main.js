@@ -836,7 +836,9 @@ const SERVICIOS_CAT_LABELS = {
   recreacion: { label: 'Recreación', icon: '🎡', color: '#9B59B6' },
   salud: { label: 'Salud', icon: '🏥', color: '#E74C3C' },
   educacion: { label: 'Educación', icon: '🎓', color: '#3498DB' },
-  cultura: { label: 'Cultura', icon: '🎭', color: '#F39C12' }
+  cultura: { label: 'Cultura', icon: '🎭', color: '#F39C12' },
+  especialistas: { label: 'Especialistas', icon: '👩‍⚕️', color: '#1ABC9C' },
+  emprendedores: { label: 'Emprendedores', icon: '🎉', color: '#E91E8C' }
 };
 
 const SERVICIOS_TIPO_LABELS = {
@@ -852,7 +854,13 @@ const SERVICIOS_TIPO_LABELS = {
   publica_urbana: 'Pública Urbana', publica_rural: 'Pública Rural',
   privada_urbana: 'Privada Urbana', privada_rural: 'Privada Rural',
   // Cultura
-  centro_cultural: 'Centro Cultural', teatro: 'Teatro', anfiteatro: 'Anfiteatro'
+  centro_cultural: 'Centro Cultural', teatro: 'Teatro', anfiteatro: 'Anfiteatro',
+  // Especialistas
+  psicologo_infantil: 'Psicólogo Infantil', pediatra: 'Pediatra',
+  profesor_particular: 'Profesor Particular', psicopedagogo: 'Psicopedagogo',
+  // Emprendedores
+  cotillon: 'Cotillón', decorador: 'Decoración de Eventos',
+  catering: 'Catering', inflable: 'Alquiler de Inflables'
 };
 
 function renderServiciosNnya() {
@@ -879,6 +887,9 @@ function renderServiciosNnya() {
         <div class="svc-card-name">${l.name}</div>
         <div class="svc-card-location"><span aria-hidden="true">📍</span> ${l.municipio}, Misiones</div>
         <div class="svc-card-desc">${l.desc}</div>
+        ${l.direccion ? `<div class="svc-card-address"><span aria-hidden="true">🏠</span> ${l.direccion}</div>` : ''}
+        ${l.telefono ? `<a href="tel:${l.telefono.replace(/[^0-9+]/g,'').replace(/^0/,'+540')}" class="svc-card-phone"><span aria-hidden="true">📞</span> ${l.telefono}</a>` : ''}
+        ${l.mapa ? `<a href="${l.mapa}" target="_blank" rel="noopener" class="svc-card-map"><span aria-hidden="true">🗺️</span> Ver en mapa</a>` : ''}
       </div>
     `).join('');
   } else {
