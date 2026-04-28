@@ -2941,3 +2941,55 @@ a:focus:not(:focus-visible) {
   transition: background var(--trans-base), color var(--trans-base);
 }
 .svc-card-map:hover { background: var(--naranja); color: #fff; }
+
+/* ============================================================
+   FOOTER COPYRIGHT / LEGAL
+   ============================================================ */
+.footer-copyright-legal {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+.footer-credits {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.75);
+  font-weight: 400;
+}
+.footer-credits strong { color: var(--tierra-calida); }
+.footer-legal-text {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.7;
+  max-width: 780px;
+}
+.footer-legal-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+.footer-legal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: var(--r-full);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  transition: all var(--trans-base);
+}
+.footer-legal-badge--link:hover {
+  background: rgba(233,168,76,0.12);
+  border-color: rgba(233,168,76,0.3);
+  color: var(--tierra-calida);
+}

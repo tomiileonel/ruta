@@ -313,9 +313,14 @@ function setLang(event, lang) {
     }
   }
 
-  // 4. Save preference and update lang attribute
+  // 4. Save preference and update lang attribute + og:locale
   localStorage.setItem('rna_idioma', lang);
   document.documentElement.lang = lang;
+  const ogLocale = document.querySelector('meta[property="og:locale"]');
+  const localeMap = { es: 'es_AR', pt: 'pt_BR', en: 'en_US' };
+  if (ogLocale) ogLocale.setAttribute('content', localeMap[lang] || 'es_AR');
+  const dcLang = document.querySelector('meta[name="DC.language"]');
+  if (dcLang) dcLang.setAttribute('content', lang === 'es' ? 'es-AR' : lang === 'pt' ? 'pt-BR' : 'en-US');
 }
 
 // ─── LAZY MAP LOADING ────────────────────────────────────────

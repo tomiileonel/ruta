@@ -6,6 +6,9 @@
       "municipios": "Municipios",
       "participa": "Participá",
       "explorar": "Explorar Mapa →",
+      "capacitacion": "Capacitación",
+      "emblemas": "Emblemas",
+      "servicios": "Servicios NNyA",
       "volver": "← Volver al Inicio"
     },
     "hero": {
@@ -14,18 +17,109 @@
       "title_2": "y la Adolescencia",
       "subtitle": "De Misiones al Mundo — La guía turística integral que conecta familias, comunidades y emprendimientos locales en los 79 municipios de la provincia.",
       "btn_primary": "🗺️ Explorar el Mapa Interactivo",
-      "btn_secondary": "Ser Parte de la Ruta"
+      "btn_secondary": "Ser Parte de la Ruta",
+      "scroll": "Descubrir"
     },
     "stats": {
       "municipios": "Municipios",
       "emprendimientos": "Emprendimientos",
       "meses": "Meses activos"
     },
+    "credibilidad": {
+      "label": "Quiénes Somos",
+      "rol": "Directora Editorial · Revista Prisma",
+      "bio": "Impulsora y referente institucional de la Ruta de la Niñez y la Adolescencia de Misiones. Con más de una década de trayectoria en comunicación cultural y periodismo de impacto social, Laura lidera esta iniciativa que articula derechos de la infancia, turismo responsable y desarrollo comunitario en toda la provincia.",
+      "visitar": "📰 Visitar Revista Prisma →",
+      "reconocimiento": "Reconocimiento oficial",
+      "declaracion": "Iniciativa declarada de Interés Provincial por la Cámara de Representantes de la Provincia de Misiones",
+      "inst": "República Argentina · Provincia de Misiones",
+      "stat1": "Municipios de la provincia",
+      "stat2": "Emprendimientos adheridos",
+      "stat3": "Familias conectadas"
+    },
+    "pilares": {
+      "label": "Nuestros Ejes",
+      "title": "Pilares de",
+      "title_em": "Impacto Social",
+      "subtitle": "Cuatro dimensiones que dan forma a una ruta que transforma comunidades y protege derechos.",
+      "p1_title": "Turismo Responsable",
+      "p1_desc": "Conectamos familias con experiencias auténticas en la naturaleza misionera, promoviendo el respeto por los ecosistemas y las comunidades locales.",
+      "p1_link": "Explorar",
+      "p2_title": "Derechos de la Niñez",
+      "p2_desc": "Cada actividad y espacio de la Ruta está diseñado para garantizar entornos seguros, inclusivos y enriquecedores para niñas, niños y adolescentes.",
+      "p2_link": "Conocer más",
+      "p3_title": "Emprendimientos Locales",
+      "p3_desc": "Visibilizamos y potenciamos los emprendimientos de las comunidades misioneras, creando redes de economía local solidaria y sostenible.",
+      "p3_link": "Ver directorio",
+      "p4_title": "Cultura y Tecnología",
+      "p4_desc": "Integramos la riqueza cultural misionera con herramientas digitales que facilitan el acceso, la participación y la difusión global de nuestra identidad.",
+      "p4_link": "Descubrir"
+    },
+    "mapa": {
+      "label": "Mapa Interactivo",
+      "title": "Descubrí",
+      "title_em": "cada rincón de Misiones",
+      "desc": "Navegá por los 79 municipios de la provincia y encontrá alojamientos, gastronomía, espacios culturales, experiencias en la naturaleza y servicios adaptados para toda la familia.",
+      "btn": "🗺️ Ver Mapa Completo →",
+      "filter_todos": "🗺️ Todos",
+      "filter_aloj": "🏡 Alojamiento",
+      "filter_gastro": "🍽️ Gastronomía",
+      "filter_cultura": "🎭 Cultura",
+      "filter_nat": "🌲 Naturaleza"
+    },
+    "capacitacion": {
+      "label": "Formación Profesional",
+      "title": "Capacitación en",
+      "title_em": "Atención Infantil y Juvenil",
+      "desc": "Preparamos a emprendedores, comerciantes y prestadores de servicios para brindar una atención segura, inclusiva y de calidad al público infantil y juvenil en toda la provincia.",
+      "c1_title": "Atención al Cliente Infantil y Juvenil",
+      "c1_desc": "Cómo recibir y atender niños y adolescentes de manera segura, empática y profesional en tu comercio o emprendimiento.",
+      "c2_title": "Protocolos de Seguridad para Menores",
+      "c2_desc": "Procedimientos basados en la Ley Juanita y normativas provinciales para garantizar la protección integral de niñas, niños y adolescentes.",
+      "c3_title": "Turismo Inclusivo Familiar",
+      "c3_desc": "Adaptar espacios, actividades y servicios para familias con niños de todas las edades, incluyendo accesibilidad y contención.",
+      "c4_title": "Primeros Auxilios Pediátricos",
+      "c4_desc": "Protocolo básico de emergencias para emprendedores turísticos: RCP infantil, manejo de alergias y situaciones frecuentes.",
+      "ley_title": "⚖️ Ley Juanita — Viajes Estudiantiles Seguros",
+      "ley_desc": "Marco regulatorio integral para garantizar la seguridad de niñas, niños y adolescentes en viajes estudiantiles en Misiones.",
+      "ley_btn": "📄 Leer sobre la Ley Juanita →"
+    },
+    "crecemos": {
+      "label": "Trabajá con Nosotros",
+      "title": "Crecemos",
+      "title_em": "Juntos",
+      "desc": "¿Tenés un emprendimiento, local, servicio o evento cultural en Misiones? Sumarte a la Ruta significa visibilidad provincial y nacional, conexión con familias que eligen turismo responsable y ser parte de una red en constante crecimiento.",
+      "b1": "Perfil completo en el directorio digital accesible desde el mapa interactivo",
+      "b2": "Difusión en redes sociales de @rnamisiones y Revista Prisma",
+      "b3": "Acceso a la red de emprendedores y programas de capacitación",
+      "b4": "Sello de calidad \"Ruta de la Niñez Misiones\" para tus comunicaciones",
+      "b5": "Sin costo de adhesión inicial — apostamos al crecimiento colectivo",
+      "form_title": "Quiero sumarme a la Ruta",
+      "form_sub": "Completá el formulario y nos contactamos en 48–72 hs hábiles",
+      "btn_submit": "Enviar Propuesta →",
+      "success_title": "¡Propuesta recibida!",
+      "success_desc": "Revisaremos tu propuesta y nos contactaremos en 48–72 horas hábiles. Bienvenide a la Ruta."
+    },
+    "instagram": {
+      "label": "Comunidad Digital",
+      "title": "Seguinos",
+      "title_em": "en Instagram",
+      "rubros_title": "¿En qué rubros podés participar?",
+      "rubros_desc": "Estos son algunos ejemplos de comercios y servicios que pueden sumarse a la Ruta y capacitarse en atención al público infantil y juvenil."
+    },
+    "footer": {
+      "col_ruta": "La Ruta",
+      "col_munis": "Municipios",
+      "col_inst": "Institucional",
+      "copyright": "© 2024–2026 Laura Montenegro / Revista Prisma — Ruta de la Niñez y la Adolescencia de Misiones · Argentina",
+      "legal": "Todos los derechos reservados. Prohibida la reproducción total o parcial del contenido, diseño, datos y materiales de este sitio sin autorización expresa y por escrito de sus titulares. El uso no autorizado constituye una violación de la propiedad intelectual."
+    },
     "meta": {
       "title": "La Ruta de la Niñez y la Adolescencia | Misiones",
       "description": "La Ruta de la Niñez y la Adolescencia de Misiones — Guía turística integral declarada de Interés Provincial. Conectamos familias, emprendimientos y cultura en los 79 municipios de Misiones."
     }
   },
+
   "pt": {
     "nav": {
       "quienes_somos": "Quem Somos",
@@ -33,6 +127,9 @@
       "municipios": "Municípios",
       "participa": "Participe",
       "explorar": "Explorar Mapa →",
+      "capacitacion": "Capacitação",
+      "emblemas": "Emblemas",
+      "servicios": "Serviços NNyA",
       "volver": "← Voltar ao Início"
     },
     "hero": {
@@ -41,18 +138,109 @@
       "title_2": "e da Adolescência",
       "subtitle": "De Misiones para o Mundo — O guia turístico completo que conecta famílias, comunidades e negócios locais nos 79 municípios da província.",
       "btn_primary": "🗺️ Explorar o Mapa Interativo",
-      "btn_secondary": "Fazer Parte da Rota"
+      "btn_secondary": "Fazer Parte da Rota",
+      "scroll": "Descobrir"
     },
     "stats": {
       "municipios": "Municípios",
       "emprendimientos": "Empreendimentos",
       "meses": "Meses ativos"
     },
+    "credibilidad": {
+      "label": "Quem Somos",
+      "rol": "Diretora Editorial · Revista Prisma",
+      "bio": "Impulsionadora e referente institucional da Rota da Infância e da Adolescência de Misiones. Com mais de uma década de trajetória em comunicação cultural e jornalismo de impacto social, Laura lidera esta iniciativa que articula direitos da infância, turismo responsável e desenvolvimento comunitário em toda a província.",
+      "visitar": "📰 Visitar Revista Prisma →",
+      "reconocimiento": "Reconhecimento oficial",
+      "declaracion": "Iniciativa declarada de Interesse Provincial pela Câmara de Representantes da Província de Misiones",
+      "inst": "República Argentina · Província de Misiones",
+      "stat1": "Municípios da província",
+      "stat2": "Empreendimentos associados",
+      "stat3": "Famílias conectadas"
+    },
+    "pilares": {
+      "label": "Nossos Eixos",
+      "title": "Pilares de",
+      "title_em": "Impacto Social",
+      "subtitle": "Quatro dimensões que moldam uma rota que transforma comunidades e protege direitos.",
+      "p1_title": "Turismo Responsável",
+      "p1_desc": "Conectamos famílias a experiências autênticas na natureza missioneira, promovendo o respeito pelos ecossistemas e comunidades locais.",
+      "p1_link": "Explorar",
+      "p2_title": "Direitos da Infância",
+      "p2_desc": "Cada atividade e espaço da Rota é projetado para garantir ambientes seguros, inclusivos e enriquecedores para crianças e adolescentes.",
+      "p2_link": "Saiba mais",
+      "p3_title": "Empreendimentos Locais",
+      "p3_desc": "Visibilizamos e potencializamos os empreendimentos das comunidades missioneiras, criando redes de economia local solidária e sustentável.",
+      "p3_link": "Ver diretório",
+      "p4_title": "Cultura e Tecnologia",
+      "p4_desc": "Integramos a riqueza cultural missioneira com ferramentas digitais que facilitam o acesso, a participação e a difusão global da nossa identidade.",
+      "p4_link": "Descobrir"
+    },
+    "mapa": {
+      "label": "Mapa Interativo",
+      "title": "Descubra",
+      "title_em": "cada canto de Misiones",
+      "desc": "Navegue pelos 79 municípios da província e encontre hospedagens, gastronomia, espaços culturais, experiências na natureza e serviços adaptados para toda a família.",
+      "btn": "🗺️ Ver Mapa Completo →",
+      "filter_todos": "🗺️ Todos",
+      "filter_aloj": "🏡 Hospedagem",
+      "filter_gastro": "🍽️ Gastronomia",
+      "filter_cultura": "🎭 Cultura",
+      "filter_nat": "🌲 Natureza"
+    },
+    "capacitacion": {
+      "label": "Formação Profissional",
+      "title": "Capacitação em",
+      "title_em": "Atendimento Infantil e Juvenil",
+      "desc": "Preparamos empreendedores, comerciantes e prestadores de serviços para oferecer atendimento seguro, inclusivo e de qualidade ao público infantil e juvenil em toda a província.",
+      "c1_title": "Atendimento ao Cliente Infantil e Juvenil",
+      "c1_desc": "Como receber e atender crianças e adolescentes de forma segura, empática e profissional no seu comércio ou empreendimento.",
+      "c2_title": "Protocolos de Segurança para Menores",
+      "c2_desc": "Procedimentos baseados na Lei Juanita e normativas provinciais para garantir a proteção integral de crianças e adolescentes.",
+      "c3_title": "Turismo Inclusivo Familiar",
+      "c3_desc": "Adaptar espaços, atividades e serviços para famílias com crianças de todas as idades, incluindo acessibilidade e acolhimento.",
+      "c4_title": "Primeiros Socorros Pediátricos",
+      "c4_desc": "Protocolo básico de emergências para empreendedores turísticos: RCP infantil, manejo de alergias e situações frequentes.",
+      "ley_title": "⚖️ Lei Juanita — Viagens Estudantis Seguras",
+      "ley_desc": "Marco regulatório abrangente para garantir a segurança de crianças e adolescentes em viagens estudantis em Misiones.",
+      "ley_btn": "📄 Ler sobre a Lei Juanita →"
+    },
+    "crecemos": {
+      "label": "Trabalhe Conosco",
+      "title": "Crescemos",
+      "title_em": "Juntos",
+      "desc": "Tem um empreendimento, loja, serviço ou evento cultural em Misiones? Juntar-se à Rota significa visibilidade provincial e nacional, conexão com famílias que escolhem turismo responsável e fazer parte de uma rede em constante crescimento.",
+      "b1": "Perfil completo no diretório digital acessível pelo mapa interativo",
+      "b2": "Divulgação nas redes sociais de @rnamisiones e Revista Prisma",
+      "b3": "Acesso à rede de empreendedores e programas de capacitação",
+      "b4": "Selo de qualidade \"Rota da Infância Misiones\" para suas comunicações",
+      "b5": "Sem custo de adesão inicial — apostamos no crescimento coletivo",
+      "form_title": "Quero me juntar à Rota",
+      "form_sub": "Preencha o formulário e entraremos em contato em 48–72 horas úteis",
+      "btn_submit": "Enviar Proposta →",
+      "success_title": "Proposta recebida!",
+      "success_desc": "Analisaremos sua proposta e entraremos em contato em 48–72 horas úteis. Bem-vindo à Rota."
+    },
+    "instagram": {
+      "label": "Comunidade Digital",
+      "title": "Siga-nos",
+      "title_em": "no Instagram",
+      "rubros_title": "Em quais segmentos pode participar?",
+      "rubros_desc": "Estes são alguns exemplos de comércios e serviços que podem se juntar à Rota e se capacitar no atendimento ao público infantil e juvenil."
+    },
+    "footer": {
+      "col_ruta": "A Rota",
+      "col_munis": "Municípios",
+      "col_inst": "Institucional",
+      "copyright": "© 2024–2026 Laura Montenegro / Revista Prisma — Rota da Infância e da Adolescência de Misiones · Argentina",
+      "legal": "Todos os direitos reservados. Proibida a reprodução total ou parcial do conteúdo, design, dados e materiais deste site sem autorização expressa e por escrito de seus titulares. O uso não autorizado constitui violação da propriedade intelectual."
+    },
     "meta": {
       "title": "A Rota da Infância e da Adolescência | Misiones",
       "description": "A Rota da Infância e da Adolescência de Misiones — Guia turístico integral declarada de Interesse Provincial."
     }
   },
+
   "en": {
     "nav": {
       "quienes_somos": "About Us",
@@ -60,6 +248,9 @@
       "municipios": "Municipalities",
       "participa": "Join Us",
       "explorar": "Explore Map →",
+      "capacitacion": "Training",
+      "emblemas": "Landmarks",
+      "servicios": "Children's Services",
       "volver": "← Back to Home"
     },
     "hero": {
@@ -68,12 +259,102 @@
       "title_2": "and Adolescence Route",
       "subtitle": "From Misiones to the World — The comprehensive tourist guide connecting families, communities, and local businesses across the 79 municipalities of the province.",
       "btn_primary": "🗺️ Explore the Interactive Map",
-      "btn_secondary": "Be Part of the Route"
+      "btn_secondary": "Be Part of the Route",
+      "scroll": "Discover"
     },
     "stats": {
       "municipios": "Municipalities",
       "emprendimientos": "Local Businesses",
       "meses": "Active months"
+    },
+    "credibilidad": {
+      "label": "About Us",
+      "rol": "Editorial Director · Revista Prisma",
+      "bio": "Founder and institutional leader of the Childhood and Adolescence Route of Misiones. With over a decade of experience in cultural communication and social-impact journalism, Laura leads this initiative that brings together children's rights, responsible tourism, and community development across the province.",
+      "visitar": "📰 Visit Revista Prisma →",
+      "reconocimiento": "Official recognition",
+      "declaracion": "Initiative declared of Provincial Interest by the House of Representatives of the Province of Misiones",
+      "inst": "Argentine Republic · Province of Misiones",
+      "stat1": "Municipalities in the province",
+      "stat2": "Registered businesses",
+      "stat3": "Connected families"
+    },
+    "pilares": {
+      "label": "Our Axes",
+      "title": "Pillars of",
+      "title_em": "Social Impact",
+      "subtitle": "Four dimensions shaping a route that transforms communities and protects rights.",
+      "p1_title": "Responsible Tourism",
+      "p1_desc": "We connect families with authentic experiences in Misiones' nature, promoting respect for ecosystems and local communities.",
+      "p1_link": "Explore",
+      "p2_title": "Children's Rights",
+      "p2_desc": "Every activity and space on the Route is designed to ensure safe, inclusive, and enriching environments for children and adolescents.",
+      "p2_link": "Learn more",
+      "p3_title": "Local Businesses",
+      "p3_desc": "We give visibility and boost local community businesses, building networks of solidarity and sustainable local economy.",
+      "p3_link": "View directory",
+      "p4_title": "Culture & Technology",
+      "p4_desc": "We integrate Misiones' cultural richness with digital tools that facilitate access, participation, and global outreach of our identity.",
+      "p4_link": "Discover"
+    },
+    "mapa": {
+      "label": "Interactive Map",
+      "title": "Discover",
+      "title_em": "every corner of Misiones",
+      "desc": "Navigate through the 79 municipalities and find accommodation, gastronomy, cultural spaces, nature experiences, and family-friendly services.",
+      "btn": "🗺️ View Full Map →",
+      "filter_todos": "🗺️ All",
+      "filter_aloj": "🏡 Accommodation",
+      "filter_gastro": "🍽️ Food",
+      "filter_cultura": "🎭 Culture",
+      "filter_nat": "🌲 Nature"
+    },
+    "capacitacion": {
+      "label": "Professional Training",
+      "title": "Training in",
+      "title_em": "Child & Youth Care",
+      "desc": "We prepare entrepreneurs, merchants, and service providers to offer safe, inclusive, and quality attention to children and youth across the province.",
+      "c1_title": "Child & Youth Customer Service",
+      "c1_desc": "How to safely, empathetically, and professionally receive children and adolescents at your business or service.",
+      "c2_title": "Safety Protocols for Minors",
+      "c2_desc": "Procedures based on the Juanita Law and provincial regulations to guarantee the integral protection of children and adolescents.",
+      "c3_title": "Inclusive Family Tourism",
+      "c3_desc": "Adapting spaces, activities, and services for families with children of all ages, including accessibility and emotional support.",
+      "c4_title": "Pediatric First Aid",
+      "c4_desc": "Basic emergency protocol for tourism entrepreneurs: infant CPR, allergy management, and frequent situations.",
+      "ley_title": "⚖️ Juanita Law — Safe Student Trips",
+      "ley_desc": "Comprehensive regulatory framework to ensure the safety of children and adolescents during student trips in Misiones.",
+      "ley_btn": "📄 Read about the Juanita Law →"
+    },
+    "crecemos": {
+      "label": "Work With Us",
+      "title": "We Grow",
+      "title_em": "Together",
+      "desc": "Do you have a business, shop, service, or cultural event in Misiones? Joining the Route means provincial and national visibility, connection with families who choose responsible tourism, and being part of a constantly growing network.",
+      "b1": "Full profile in the digital directory accessible from the interactive map",
+      "b2": "Promotion on @rnamisiones social media and Revista Prisma",
+      "b3": "Access to the entrepreneurs' network and training programs",
+      "b4": "\"Childhood Route Misiones\" quality seal for your communications",
+      "b5": "No initial membership fee — we invest in collective growth",
+      "form_title": "I want to join the Route",
+      "form_sub": "Fill out the form and we'll contact you within 48–72 business hours",
+      "btn_submit": "Send Proposal →",
+      "success_title": "Proposal received!",
+      "success_desc": "We'll review your proposal and contact you within 48–72 business hours. Welcome to the Route."
+    },
+    "instagram": {
+      "label": "Digital Community",
+      "title": "Follow us",
+      "title_em": "on Instagram",
+      "rubros_title": "What sectors can join?",
+      "rubros_desc": "These are some examples of businesses and services that can join the Route and train in child and youth care."
+    },
+    "footer": {
+      "col_ruta": "The Route",
+      "col_munis": "Municipalities",
+      "col_inst": "Institutional",
+      "copyright": "© 2024–2026 Laura Montenegro / Revista Prisma — Childhood and Adolescence Route of Misiones · Argentina",
+      "legal": "All rights reserved. Total or partial reproduction of the content, design, data, and materials of this site is prohibited without the express written authorization of its owners. Unauthorized use constitutes a violation of intellectual property rights."
     },
     "meta": {
       "title": "The Childhood and Adolescence Route | Misiones",
